@@ -1,0 +1,74 @@
+.deposit-amount-input-container {
+  width: 100%;
+  display: flex;
+}
+
+.deposit-input-icon {
+  width: 59px;
+  height: 59px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 4.53846px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deposit-input-icon img {
+  height: 48px;
+}
+
+.deposit-input-content {
+  flex: 1;
+  height: 59px;
+  border: 0.5px solid var(--color-selectable-border);
+  border-radius: 4.53846px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.deposit-input-label {
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-left: 21px;
+}
+
+.deposit-input-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.deposit-input-text {
+  width: 100%;
+  border: none;
+  text-align: right;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-weight: bold;
+  font-size: 24px;
+  outline: none;
+  padding-right: 21px;
+}
+
+.deposit-input-description {
+  font-size: 12px;
+  margin-right: 13px;
+}
+
+.deposit-input-description .balance {
+  color: var(--color-caption);
+}
+
+.deposit-input-description .value {
+  padding-left: 4px;
+}
+
+.deposit-input-description .max {
+  background: var(--color-max-button-bg);
+  border-radius: 2.16667px;
+  margin-left: 4px;
+  font-weight: 500;
+}

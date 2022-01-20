@@ -1,0 +1,66 @@
+.vaults-container {
+  width: 90vw;
+  max-width: 473px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80px;
+
+  background: var(--color-background);
+  border: 1px solid var(--color-text);
+  border-radius: 4px;
+
+  padding: 61px 55px;
+}
+
+.vaults-title {
+  width: 173px;
+  height: 59px;
+  background: var(--color-background);
+  border: 1px solid var(--color-text);
+  border-radius: 4.53846px;
+  margin-top: -90px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-caption);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vaults-title h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.vaults-tab-menu {
+  width: 253px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 3px;
+  margin: 30px auto;
+}
+
+.vaults-tab-menu .vaults-tab-menu-item {
+  color: var(--color-text-disable);
+  border-radius: 4px;
+  width: calc(50% - 1.5px);
+  height: 23px;
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vaults-tab-menu .vaults-tab-menu-item.active {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+
+.vaults-tab-content {
+  width: 100%;
+  margin-top: 16px;
+}
