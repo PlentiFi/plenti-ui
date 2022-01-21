@@ -5,6 +5,7 @@ import { faChevronDown, faQuestionCircle } from '@fortawesome/free-solid-svg-ico
 
 import DepositAmountInput from '../DepositAmountInput'
 
+import cn from 'classname'
 import styles from './Vaults.module.css'
 
 const AddLiquidity = () => {
@@ -21,7 +22,7 @@ const AddLiquidity = () => {
 
       <div className={styles['vaults-selector']}>
         <div className={styles['vaults-selector-content']}>
-          <div className={styles['vaults-selector-icon']}>
+          <div className={cn(styles['vaults-selector-icon'], styles.uniswap)}>
             <img src="/assets/tokens/uniswap.svg" />
           </div>
           <div className={styles['vaults-selector-icon']}>
@@ -38,8 +39,14 @@ const AddLiquidity = () => {
       </div>
 
       <div className={styles['vaults-row']}>
-        <div className={styles['vaults-row-value']}>0.3% fee tier</div>
-        <div className={styles['vaults-row-value']}>100% APY <FontAwesomeIcon icon={faQuestionCircle} /></div>
+        <div className={styles['vaults-row-value']}>
+          <span className={styles.name}>Fee tier <FontAwesomeIcon icon={faQuestionCircle} /></span>
+          <span className={styles.value}>0.3%</span>
+        </div>
+        <div className={styles['vaults-row-value']}>
+          <span className={styles.name}>APY <FontAwesomeIcon icon={faQuestionCircle} /></span>
+          <span className={styles.value}>100%</span>
+        </div>
       </div>
 
       <span className={styles['vaults-content-subtitle']}>Deposit Amounts</span>
