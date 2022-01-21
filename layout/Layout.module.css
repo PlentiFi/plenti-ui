@@ -27,13 +27,13 @@
 }
 
 .main-container .tab-container {
-  max-width: 583px;
+  max-width: 357px;
   width: 90%;
-  height: 64px;
+  height: 40px;
   background: var(--color-tab-bg);
   border: 1px solid var(--color-tab-selected-bg);
   border-radius: 4px;
-  padding: 6px 5px;
+  padding: 3px;
 
   margin-left: auto;
   margin-right: auto;
@@ -52,9 +52,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 118px;
+  width: 72.26px;
 
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -65,6 +65,7 @@
 
 .main-container .tab-container .link img {
   margin-right: 5px;
+  height: 10px;
 }
 
 .main-container .page-container {

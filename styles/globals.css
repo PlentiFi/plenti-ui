@@ -16,7 +16,7 @@
 
   --color-caption: #BEE719;
 
-  --color-connect-button-bg: #4F600C80;
+  --color-connect-button-bg: rgba(0, 0, 0, 0.5);;
 
   --color-tab-bg: #FFFFFF;
   --color-tab-selected-bg: #000000;

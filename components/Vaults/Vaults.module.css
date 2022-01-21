@@ -38,6 +38,11 @@
   align-items: center;
 }
 
+.vaults-selector .vaults-selector-content .vaults-selector-icon.uniswap {
+  background: var(--color-text);
+  border-radius: 50%;
+}
+
 .vaults-selector .vaults-selector-content .vaults-selector-icon img {
   height: 37px;
 }
@@ -80,15 +85,25 @@
   border: 0.5px solid var(--color-border);
   border-radius: 4.53846px;
   font-weight: bold;
-  font-size: 16px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.vaults-row .vaults-row-value .name {
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.vaults-row .vaults-row-value .value {
+  font-size: 20px;
+  line-height: 27px;
+}
+
 .vaults-row .vaults-row-value svg {
   height: 10px;
-  margin-left: 15px;
+  margin-left: 3px;
 }
 
 .vaults-row .vaults-row-price {
@@ -125,7 +140,7 @@
   border-radius: var(--border-default-radius);
   font-weight: 500;
   font-size: 16px;
-  width: 166px;
+  width: 100%;
   height: 38px;
   margin: 16px auto 0px;
 }

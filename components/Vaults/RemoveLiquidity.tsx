@@ -45,7 +45,7 @@ const RemoveLiquidity = () => {
         </div>
       </div>
       <div className={styles['valuts-receive-mode']}>Receive in WETH</div>
-      <div className={styles['vaults-row']}>
+      <div className={styles['vaults-row3']}>
         <button className={styles['vaults-button']}>Remove Liquidity</button>
       </div>
     </div>
