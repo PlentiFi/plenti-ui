@@ -25,7 +25,14 @@ export default function useWallet(dispatch) {
     web3Modal = new Web3Modal({
       cacheProvider: true,
       providerOptions,
-    })
+      theme: {
+        background: "#000000",
+        main: "#FFF",
+        secondary: "#727171",
+        border: "#FFFFFF",
+        hover: "rgb(16, 26, 32)",
+      },
+    });
   }, [])
 
   const handleEvent = (event) => {

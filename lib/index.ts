@@ -29,7 +29,7 @@ interface Wallet {
   network?: number
 }
 
-class SommAirdropLibrary {
+class PlentiLibrary {
   public initiated: boolean
   public web3: Web3
   public contracts: any
@@ -194,4 +194,4 @@ class SommAirdropLibrary {
   }
 }
 
-export default SommAirdropLibrary
+export default PlentiLibrary;

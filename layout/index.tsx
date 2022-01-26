@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import useWallet from 'hooks/useWallet'
-import Account from 'components/Account/Account'
+import Account from 'components/Account'
 import { toNumber } from 'utils/common'
 import { addresses, ZERO } from 'utils/constants'
 import { reducer, initState } from './store'
@@ -88,33 +88,6 @@ export default function Layout({
     }
     return () => balanceTimer && clearInterval(balanceTimer)
   }, [library, state.account.address])
-
-  const checkTransactions = () => {
-    const { transactions } = state
-    Promise.all(
-      transactions.map(
-        (transaction) =>
-          new Promise((resolve) => {
-            library.web3.eth
-              .getTransactionReceipt(transaction[0])
-              .then(() => resolve(transaction[0]))
-              .catch(() => resolve(transaction[0]))
-          })
-      )
-    ).then((receipts) => {
-      dispatch({
-        type: 'txHash',
-        payload: [receipts.filter((hash) => hash), true],
-      })
-    })
-  }
-
-  useEffect(() => {
-    if (!restored && library) {
-      setRestored(true)
-      checkTransactions()
-    }
-  }, [library, state.transactions, state.account.address])
 
   const handleConnectNetwork = () => {
     setConnectModalShow(true)

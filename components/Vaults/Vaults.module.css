@@ -109,28 +109,6 @@
 .vaults-row .vaults-row-price {
   width: calc(50% - 2.5px);
   height: 75px;
-  border: 0.5px solid var(--color-border);
-  border-radius: 4.53846px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.vaults-row .vaults-row-price .min {
-  font-weight: normal;
-  font-size: 12px;
-}
-
-.vaults-row .vaults-row-price .value {
-  font-weight: bold;
-  font-size: 24px;
-}
-
-.vaults-row .vaults-row-price .per {
-  font-weight: normal;
-  font-size: 12px;
-  color: var(--color-text-disable);
 }
 
 .vaults-button {
@@ -221,4 +199,18 @@
   font-size: 16px;
   text-decoration: underline;
   margin-top: 16px;
+}
+
+.vaults-row-arrow {
+  position: absolute;
+  background: var(--color-background);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--border-default-radius);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: calc(50% - 30px);
+  margin-top: -40px;
 }

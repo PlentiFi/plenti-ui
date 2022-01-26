@@ -1,0 +1,44 @@
+.deposit-amount-value-container {
+  width: 100%;
+  display: flex;
+  background: var(--color-background);
+  border: 0.5px solid var(--color-border);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.deposit-value-icon {
+  width: 59px;
+  height: 59px;
+  border-right: 0.5px solid var(--color-border);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deposit-input-icon img {
+  height: 48px;
+}
+
+.deposit-value-content {
+  flex: 1;
+  height: 59px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 17px;
+}
+
+.deposit-value-content .balance {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.deposit-value-content .usd {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-disable);
+}
