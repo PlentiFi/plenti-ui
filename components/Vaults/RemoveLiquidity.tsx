@@ -1,15 +1,10 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
-import DepositAmountInput from '../DepositAmountInput'
-
-import cn from 'classname'
+import Account from "../Account";
 
 import styles from './Vaults.module.css'
 
-const RemoveLiquidity = () => {
+const RemoveLiquidity = ({ library, state, onConnectWallet }) => {
 
   const [amount, setAmount] = useState('');
 
@@ -22,9 +17,9 @@ const RemoveLiquidity = () => {
       </div>
       <div className={styles['vaults-row3']}>
         <span className={styles['vaults-content-subtitle']}>You will Receive</span> 
-        {/* <div className={styles['vaults-row-arrow']}>
-          <FontAwesomeIcon icon={faArrowDown} />
-        </div> */}
+        <div className={styles['vaults-row-arrow']}>
+          <img src="/assets/arrow-down.png" />
+        </div>
       </div>
       <div className={styles['vaults-row2']}>
         <div className={styles['valuts-receive']}>
@@ -45,8 +40,17 @@ const RemoveLiquidity = () => {
         </div>
       </div>
       <div className={styles['valuts-receive-mode']}>Receive in WETH</div>
-      <div className={styles['vaults-row3']}>
-        <button className={styles['vaults-button']}>Remove Liquidity</button>
+      <div className={styles["vaults-row3"]}>
+        {state.account.address ? (
+          <button className={styles['vaults-button']}>Remove Liquidity</button>
+        ) : (
+            <Account
+              library={library}
+              className='white-full-width'
+              {...state}
+              connectWallet={() => onConnectWallet(true)}
+            />
+          )}
       </div>
     </div>
   )

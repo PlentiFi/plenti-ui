@@ -10,6 +10,8 @@
   --color-background: #000000;
   --color-border: #FFFFFF;
   --color-selectable-border: #BEE719;
+
+  --color-modal-divider:  #8F8F8F;
   
   --color-text: #FFFFFF;
   --color-text-disable: #8F8F8F;
@@ -335,4 +337,14 @@ button {
   }
 }
 
+/* Web3 Modal Customization */
+.web3modal-modal-lightbox {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+.web3modal-modal-card {
+  border-radius: 0px !important;
+}
+
+/* Pages */
 @import url('pages/vaults.css');

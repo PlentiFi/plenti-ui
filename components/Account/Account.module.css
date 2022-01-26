@@ -4,6 +4,10 @@
   height: 46px;
 }
 
+.account-button-container.white-full-width {
+  width: 100%;
+}
+
 .account-button-container .connect-button {
   width: 100%;
   background: var(--color-connect-button-bg);
@@ -16,6 +20,12 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   padding: var(--padding-narrow);
+}
+
+.account-button-container .connect-button.white-full-width {
+  background: var(--color-text);
+  color: var(--color-background);
+  border: none;
 }
 
 .account-button-container .info {

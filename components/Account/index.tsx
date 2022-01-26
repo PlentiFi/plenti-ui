@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { TMap } from 'types'
 import Button from 'components/Button/Button'
+
 import styles from './Account.module.css'
 
 interface IAccount {
   caption?: string
+  className?: string,
   library: any
   loading: boolean
   account: TMap
@@ -16,11 +18,8 @@ interface IAccount {
 
 export default function Account({
   caption,
-  dispatch,
-  library,
-  loading = false,
+  className,
   account,
-  balance,
   connectWallet,
   disconnectWallet
 }: IAccount) {
@@ -30,10 +29,10 @@ export default function Account({
   }
 
   return (
-    <div className={styles['account-button-container']}>
+    <div className={`${styles['account-button-container']} ${styles[className]}`}>
       {!account.address ? (
         <Button
-          className={`cursor ${styles['connect-button']}`}
+          className={`cursor ${styles['connect-button']} ${styles[className]}`}
           onClick={() => {
             connectWallet(true)
           }}
