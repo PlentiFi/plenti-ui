@@ -118,6 +118,7 @@ export default function Layout({
       <div className='page-background'></div>
       <main className={styles.main}>
         <header className={styles.header}>
+          <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti.png" alt="plenti" /></a>
           <div className={styles.headerConnect}>
             <Account
               library={library}

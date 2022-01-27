@@ -2,6 +2,7 @@ import { AppProps } from 'next/app'
 import Layout from 'layout'
 
 import 'styles/globals.css'
+import 'react-popper-tooltip/dist/styles.css';
 
 import { DEFAULT_NETWORK } from '../utils/constants'
 

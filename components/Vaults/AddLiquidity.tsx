@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
@@ -9,12 +8,35 @@ import {
 import DepositAmountInput from "../DepositAmountInput";
 import PriceRange from "../PriceRange";
 import Account from "../Account";
+import TooltipIcon from "../TooltipIcon";
 
-import useWallet from "hooks/useWallet";
-import { reducer, initState } from "../../layout/store";
+import { isNaN, compare } from '../../utils/number'
 
 import cn from "classname";
 import styles from "./Vaults.module.css";
+
+type Status = "success" | "noAmount" | "insufficientBalance";
+
+const errorMsg = {
+  success: "Add Liquidity",
+  noAmount: "Enter an amount",
+  insufficientBalance: "Insufficient balance",
+};
+
+const ActionButton = ({
+  status,
+  onAction,
+}: {
+  status: Status;
+  onAction: Function;
+}) =>
+  status === "success" ? (
+    <button className={styles["vaults-button"]} onClick={(e) => onAction()}>
+      {errorMsg[status]}
+    </button>
+  ) : (
+    <div className={styles["vaults-button-error"]}>{errorMsg[status]}</div>
+  );
 
 const AddLiquidity = ({
   onSelectVault,
@@ -28,6 +50,28 @@ const AddLiquidity = ({
 
   const [balanceOne, setBalanceOne] = useState(1.091);
   const [balanceTwo, setBalanceTwo] = useState(0.9101);
+
+  const [error, setError] = useState<Status>("success");
+
+  useEffect(() => {
+    if (isNaN(depositAmountOne) || isNaN(depositAmountTwo)) {
+      setError('noAmount')
+      return
+    }
+
+    if (compare(depositAmountOne, 0) <= 0|| compare(depositAmountTwo, 0) <= 0) {
+      setError('noAmount')
+      return
+    }
+
+    if (compare(depositAmountOne, balanceOne) > 0 || compare(depositAmountTwo, balanceTwo) > 0) {
+      setError('insufficientBalance')
+      return
+    }
+
+    setError('success')
+
+  }, [depositAmountOne, depositAmountTwo, balanceOne, balanceTwo])
 
   return (
     <div className={styles["vaults-content"]}>
@@ -57,14 +101,18 @@ const AddLiquidity = ({
 
       <div className={styles["vaults-row"]}>
         <div className={styles["vaults-row-value"]}>
-          <span className={styles.name}>
-            Fee tier <FontAwesomeIcon icon={faQuestionCircle} />
-          </span>
+          <span className={styles.name}>Fee tier</span>
           <span className={styles.value}>0.3%</span>
         </div>
         <div className={styles["vaults-row-value"]}>
           <span className={styles.name}>
-            APY <FontAwesomeIcon icon={faQuestionCircle} />
+            APY
+            <TooltipIcon icon={faQuestionCircle} placement="top">
+              <span style={{ padding: "9px 15px" }}>
+                This APY is based on
+                <br /> the last 90 days of data
+              </span>
+            </TooltipIcon>
           </span>
           <span className={styles.value}>100%</span>
         </div>
@@ -108,12 +156,7 @@ const AddLiquidity = ({
       </div>
       <div className={styles["vaults-row"]}>
         {state.account.address ? (
-          <button
-            className={styles["vaults-button"]}
-            onClick={(e) => onAddLiquidity()}
-          >
-            Add Liquidity
-          </button>
+          <ActionButton status={error} onAction={() => onAddLiquidity()} />
         ) : (
           <Account
             library={library}

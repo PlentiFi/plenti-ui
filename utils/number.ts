@@ -54,3 +54,15 @@ export const numberWithCommas = (x) => {
   while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
   return x;
 }
+
+export const isNaN = (x) => {
+  const bn = new BigNumber(x)
+  return bn.isNaN()
+}
+
+export const compare = (x, y) => {
+  const bnX = new BigNumber(x)
+  const bnY = new BigNumber(y)
+
+  return bnX.comparedTo(bnY)
+}
