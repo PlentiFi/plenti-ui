@@ -20,12 +20,17 @@
 .deposit-input-content {
   flex: 1;
   height: 59px;
-  border: 0.5px solid var(--color-selectable-border);
+  border: 0.5px solid var(--color-border);
   border-radius: 4.53846px;
   margin-left: 4px;
   display: flex;
   align-items: center;
 }
+
+.deposit-input-content:hover {
+  border: 0.5px solid var(--color-selectable-border);
+}
+
 
 .deposit-input-label {
   font-weight: bold;

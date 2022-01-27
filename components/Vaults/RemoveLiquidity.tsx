@@ -11,7 +11,7 @@ const RemoveLiquidity = ({ library, state, onConnectWallet }) => {
   return (
     <div className={styles['vaults-content']}>
       <span className={styles['vaults-content-subtitle']}>Amount to Remove</span>
-      <div className={styles['vaults-row2']}>
+      <div className={styles['vaults-content-input-box']}>
         <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)} className={styles['vaults-remove-amount-input']} />
         <span className={styles['vaults-remove-amount-percent']}>%</span>
       </div>
