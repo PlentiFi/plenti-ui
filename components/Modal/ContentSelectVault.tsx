@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 
 import styles from "./Modal.module.css";
-import cn from "classname";
 
 const ContentSelectVault = () => {
-  const [val, setVal] = useState("");
+  // const [val, setVal] = useState("");
 
   return (
     <div className={styles["modal-select-vault"]}>
       <span className={styles["modal-view-title"]}>Select a Vault</span>
-      <input
+      {/* <input
         type="text"
         value={val}
         onChange={(e) => setVal(e.target.value)}
         className={styles["search-token-amm"]}
         placeholder="Search token or AMM"
-      />
-      <div className={styles["modal-view-divider"]}/>
+      /> */}
+      <div className={styles["modal-view-divider"]} style={{ marginTop: 43, marginBottom: 23 }}/>
 
       <div className={styles["modal-select-vault-search-result"]}>
         <div className={styles["modal-select-vault-search-item"]}>

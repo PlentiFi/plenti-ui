@@ -120,12 +120,11 @@
 }
 
 .vaults-button {
-  border: 2px solid var(--color-selectable-border); 
-  background: var(--color-background);
-  color: var(--color-caption);
+  background: var(--color-caption);
+  color: var(--color-background);
   border-radius: var(--border-default-radius);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   width: 100%;
   height: 49px;
   margin: 16px auto 0px;
