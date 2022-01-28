@@ -115,10 +115,12 @@ export default function Layout({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='page-background'></div>
+      <div className='page-background'>
+        <div className='ball'></div>
+      </div>
       <main className={styles.main}>
         <header className={styles.header}>
-          <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti.png" alt="plenti" /></a>
+          <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti-ball.png" alt="plenti" /></a>
           <div className={styles.headerConnect}>
             <Account
               library={library}

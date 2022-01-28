@@ -113,8 +113,16 @@
   justify-content: center;
 }
 
+.modal-select-vault-search-item .icon.uniswap {
+  border: none;
+}
+
 .modal-select-vault-search-item .icon img {
-  height: 90%;
+  height: 80%;
+}
+
+.modal-select-vault-search-item .icon.uniswap img {
+  height: 97%;
 }
 
 .modal-select-vault-search-item .name {
