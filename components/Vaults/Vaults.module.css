@@ -39,12 +39,15 @@
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-icon.uniswap {
-  background: var(--color-text);
-  border-radius: 50%;
+  border: none;
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-icon img {
   height: 37px;
+}
+
+.vaults-selector .vaults-selector-content .vaults-selector-icon.uniswap img {
+  height: 49px;
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-title {

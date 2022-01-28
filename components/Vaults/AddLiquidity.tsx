@@ -84,15 +84,15 @@ const AddLiquidity = ({
       >
         <div className={styles["vaults-selector-content"]}>
           <div className={cn(styles["vaults-selector-icon"], styles.uniswap)}>
-            <img src="/assets/tokens/uniswap.svg" />
-          </div>
-          <div className={styles["vaults-selector-icon"]}>
-            <img src="/assets/tokens/eth.svg" />
+            <img src="/assets/tokens/uniswap-red.svg" />
           </div>
           <div className={styles["vaults-selector-icon"]}>
             <img src="/assets/tokens/wbtc.svg" />
           </div>
-          <span className={styles["vaults-selector-title"]}>WBTC / ETH</span>
+          <div className={styles["vaults-selector-icon"]}>
+            <img src="/assets/tokens/usdt.svg" />
+          </div>
+          <span className={styles["vaults-selector-title"]}>WBTC / USDT</span>
         </div>
         <div className={styles["vaults-selector-combo"]}>
           <FontAwesomeIcon icon={faChevronDown} />
@@ -102,7 +102,7 @@ const AddLiquidity = ({
       <div className={styles["vaults-row"]}>
         <div className={styles["vaults-row-value"]}>
           <span className={styles.name}>Fee tier</span>
-          <span className={styles.value}>0.3%</span>
+          <span className={styles.value}>0.05%</span>
         </div>
         <div className={styles["vaults-row-value"]}>
           <span className={styles.name}>
@@ -121,7 +121,7 @@ const AddLiquidity = ({
       <span className={styles["vaults-content-subtitle"]}>Deposit Amounts</span>
       <div className={styles["vaults-row"]}>
         <DepositAmountInput
-          token="eth"
+          token="wbtc"
           inputValue={depositAmountOne}
           balance={balanceOne}
           onChange={(value) => setDepositAmountOne(value)}
@@ -130,7 +130,7 @@ const AddLiquidity = ({
       </div>
       <div className={styles["vaults-row"]}>
         <DepositAmountInput
-          token="wbtc"
+          token="usdt"
           inputValue={depositAmountTwo}
           balance={balanceTwo}
           onChange={(value) => setDepositAmountTwo(value)}

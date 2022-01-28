@@ -158,11 +158,20 @@ body {
   position: fixed;
   left: 0px;
   top: 0px;
-  background-image: url('/assets/background.png');
+  background-image: url('/assets/backgrounds/background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   z-index: -100;
+}
+
+.page-background .ball {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/backgrounds/ball.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 body {
