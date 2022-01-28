@@ -17,18 +17,18 @@ const ContentAddLiquidity = ({ onConfirm }) => {
             <img src="/assets/tokens/uniswap-red.svg" />
           </div>
           <div className={styles.icon}>
-            <img src="/assets/tokens/wbtc.svg" />
+            <img src="/assets/tokens/weth.svg" />
           </div>
           <div className={styles.icon}>
             <img src="/assets/tokens/usdt.svg" />
           </div>
-          <span className={styles.name}>WBTC / USDT</span>
+          <span className={styles.name}>WETH / USDT</span>
           <span className={styles.fee}>0.05%</span>
         </div>
       </div>
 
       <div className={styles["inputed-value"]}>
-        <DepositAmountValue token='wbtc' balance={0.342719} usdBalance={950.00} />
+        <DepositAmountValue token='weth' balance={0.342719} usdBalance={950.00} />
         <DepositAmountValue token='usdt' balance={0} usdBalance={0} />
       </div>
 

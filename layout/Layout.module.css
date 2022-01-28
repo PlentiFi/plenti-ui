@@ -31,13 +31,13 @@
 }
 
 .main-container .tab-container {
-  max-width: 535px;
+  max-width: 548px;
   width: 90%;
   height: 59px;
   background: var(--color-tab-bg);
   border: 1px solid var(--color-tab-selected-bg);
   border-radius: 4px;
-  padding: 3px;
+  padding: 5px;
 
   margin-left: auto;
   margin-right: auto;
@@ -56,10 +56,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 108px;
+  width: 105px;
 
   font-size: 18px;
   font-weight: 600;
+}
+
+.main-container .tab-container .link.social {
+  width: 70px;
 }
 
 .main-container .tab-container .link.active {
@@ -70,6 +74,10 @@
 .main-container .tab-container .link img {
   margin-right: 5px;
   height: 14px;
+}
+
+.main-container .tab-container .link.social img {
+  height: 20px;
 }
 
 .main-container .page-container {

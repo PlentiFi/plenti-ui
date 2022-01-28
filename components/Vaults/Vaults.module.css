@@ -255,3 +255,23 @@
   left: calc(50% - 30px);
   margin-top: -40px;
 }
+
+/* Service Fee Panel */
+.vaults-service-fee-panel {
+  width: 100%;
+  padding: 14px 16px 9px;
+  background: var(--color-background);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--border-default-radius);
+}
+
+.vaults-service-fee-panel .row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.vaults-service-fee-panel .row {
+  margin-bottom: 5px;
+}
