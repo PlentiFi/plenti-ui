@@ -87,12 +87,12 @@ const AddLiquidity = ({
             <img src="/assets/tokens/uniswap-red.svg" />
           </div>
           <div className={styles["vaults-selector-icon"]}>
-            <img src="/assets/tokens/wbtc.svg" />
+            <img src="/assets/tokens/weth.svg" />
           </div>
           <div className={styles["vaults-selector-icon"]}>
             <img src="/assets/tokens/usdt.svg" />
           </div>
-          <span className={styles["vaults-selector-title"]}>WBTC / USDT</span>
+          <span className={styles["vaults-selector-title"]}>WETH / USDT</span>
         </div>
         <div className={styles["vaults-selector-combo"]}>
           <FontAwesomeIcon icon={faChevronDown} />
@@ -121,7 +121,7 @@ const AddLiquidity = ({
       <span className={styles["vaults-content-subtitle"]}>Deposit Amounts</span>
       <div className={styles["vaults-row"]}>
         <DepositAmountInput
-          token="wbtc"
+          token="weth"
           inputValue={depositAmountOne}
           balance={balanceOne}
           onChange={(value) => setDepositAmountOne(value)}
@@ -153,6 +153,22 @@ const AddLiquidity = ({
           value={2750.7}
           description="WBTC per ETH"
         />
+      </div>
+      <div className={styles["vaults-row"]}>
+        <div className={styles["vaults-service-fee-panel"]}>
+          <div className={styles.row}>
+            <span>Service Fee:</span>
+            <span>0.3% annual</span>
+          </div>
+          <div className={styles.row}>
+            <span>Strategy Owner Fee:</span>
+            <span>0.1% monthly</span>
+          </div>
+          <div className={styles.row}>
+            <span>Validator Fee:</span>
+            <span>0.05% annual</span>
+          </div>
+        </div>
       </div>
       <div className={styles["vaults-row"]}>
         {state.account.address ? (

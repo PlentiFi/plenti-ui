@@ -24,12 +24,12 @@ const ContentSelectVault = () => {
             <img src="/assets/tokens/uniswap-red.svg" />
           </div>
           <div className={styles.icon}>
-            <img src="/assets/tokens/wbtc.svg" />
+            <img src="/assets/tokens/weth.svg" />
           </div>
           <div className={styles.icon}>
             <img src="/assets/tokens/usdt.svg" />
           </div>
-          <span className={styles.name}>WBTC / USDT</span>
+          <span className={styles.name}>WETH / USDT</span>
           <span className={styles.fee}>0.05%</span>
         </div>
       </div>

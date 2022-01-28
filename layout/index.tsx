@@ -10,8 +10,8 @@ import { reducer, initState } from './store'
 
 import Link from 'next/link'
 
-import cn from 'classname'
 import styles from './Layout.module.css'
+import cn from 'classname'
 
 const FETCH_TIME = 15
 let balanceTimer = null
@@ -145,10 +145,13 @@ export default function Layout({
               <Link href="/vaults">Portfolio</Link>
             </div>
             <div className={styles.link}>
-              <Link href="/vaults">Charts</Link>
+              <Link href="/vaults">Events</Link>
             </div>
-            <div className={styles.link}>
-              <Link href="/vaults">About</Link>
+            <div className={cn(styles.link, styles.social)}>
+              <a href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.svg" /></a>
+            </div>
+            <div className={cn(styles.link, styles.social)}>
+              <a href="https://twitter.com/plenti_fi" target="_blank"> <img src="/assets/socials/twitter.svg" /></a >
             </div>
           </div>
           <div className={styles['page-container']}>
