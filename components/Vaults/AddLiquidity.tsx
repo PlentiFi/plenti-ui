@@ -92,7 +92,7 @@ const AddLiquidity = ({
           <div className={styles["vaults-selector-icon"]}>
             <img src="/assets/tokens/usdt.svg" />
           </div>
-          <span className={styles["vaults-selector-title"]}>WETH / USDT</span>
+          <span className={styles["vaults-selector-title"]}>WETH / USDT - 0.05%</span>
         </div>
         <div className={styles["vaults-selector-combo"]}>
           <FontAwesomeIcon icon={faChevronDown} />
@@ -100,10 +100,6 @@ const AddLiquidity = ({
       </div>
 
       <div className={styles["vaults-row"]}>
-        <div className={styles["vaults-row-value"]}>
-          <span className={styles.name}>Fee tier</span>
-          <span className={styles.value}>0.05%</span>
-        </div>
         <div className={styles["vaults-row-value"]}>
           <span className={styles.name}>
             APY

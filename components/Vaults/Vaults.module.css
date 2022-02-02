@@ -14,7 +14,7 @@
 .vaults-selector {
   display: flex;
   width: 100%;
-  height: 57px;
+  height: 42px;
   margin-top: 16px;
 }
 
@@ -28,8 +28,8 @@
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-icon {
-  width: 51px;
-  height: 51px;
+  width: 35px;
+  height: 35px;
   border: 0.5px solid var(--color-border);
   border-radius: 4.53846px;
   margin-right: 3px;
@@ -43,18 +43,18 @@
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-icon img {
-  height: 37px;
+  height: 25px;
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-icon.uniswap img {
-  height: 49px;
+  height: 35px;
 }
 
 .vaults-selector .vaults-selector-content .vaults-selector-title {
   flex: 1;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .vaults-selector .vaults-selector-combo {
@@ -92,7 +92,7 @@
 
 .vaults-row .vaults-row-value {
   width: calc(50% - 2.5px);
-  height: 64px;
+  height: 52px;
   border: 0.5px solid var(--color-border);
   border-radius: 4.53846px;
   font-weight: bold;
