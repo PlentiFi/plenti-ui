@@ -46,10 +46,6 @@ export async function getStaticPaths(params) {
     // })
 }
 
-export async function unstable_getStaticProps({ params }) {
-    console.log(params)
-}
-
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
