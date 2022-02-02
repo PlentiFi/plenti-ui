@@ -36,7 +36,7 @@ function Blog({ props }) {
 }
 
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
     var response = await Storyblok
         .get('cdn/stories/', {
             version: 'draft'
