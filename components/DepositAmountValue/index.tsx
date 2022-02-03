@@ -10,7 +10,7 @@ const DepositAmountValue = ({ token, balance, usdBalance }) => {
       </div>
       <div className={styles['deposit-value-content']}>
         <span className={styles['balance']}>{balance}</span>
-        <span className={styles['usd']}>{`$${usdBalance.toFixed(2)}`}</span>
+        <span className={styles['usd']}>{`$${usdBalance}`}</span>
       </div>
     </div>
   )
