@@ -139,7 +139,7 @@ export default function Layout({
             </div>
             <div className={styles.link}>
               <img src="/assets/hot.svg" />
-              <Link href="/vaults">Hot</Link>
+              <Link href="/hot">Hot</Link>
             </div>
             <div className={styles.link}>
               <Link href="/vaults">Portfolio</Link>
