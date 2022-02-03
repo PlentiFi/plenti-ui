@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Web3Modal from 'web3modal'
 import WalletConnectProvider from '@walletconnect/web3-provider'
-import SommAirdropLibrary from "lib/index";
+import PlentiLibrary from "lib/index";
 import { addresses, DEFAULT_NETWORK } from 'utils/constants'
 
 let web3Modal
@@ -58,10 +58,12 @@ export default function useWallet(dispatch) {
 
   const initLibrary = (provider) => {
     if (library) {
+      console.log("Library updated");
       library.setProvider(provider)
     } else {
+      console.log('Library created')
       setLibrary(
-        new SommAirdropLibrary(provider, {
+        new PlentiLibrary(provider, {
           onEvent: handleEvent,
           addresses,
         })

@@ -20,8 +20,7 @@ import { compare } from "utils/number";
 
 type VAULTS_TAB_TYPE = "add" | "remove";
 
-export default function Vaults({ library, state, dispatch }) {
-  const [, connectWallet] = useWallet(dispatch);
+export default function Vaults({ library, state, dispatch, connectWallet }) {
 
   const [tab, setTab] = useState<VAULTS_TAB_TYPE>("add");
 
@@ -97,6 +96,7 @@ export default function Vaults({ library, state, dispatch }) {
     )
 
     try {
+      console.log(transaction)
       const transactionResult = await transaction.send()
       console.log(transactionResult)
 
