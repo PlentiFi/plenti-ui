@@ -85,7 +85,7 @@ export default function Layout({
             <div className={cn(styles.link, { [styles.active]: router.route.includes('/vaults') })}>
               <Link href="/vaults">Vaults</Link>
             </div>
-            <div className={styles.link}>
+            <div className={cn(styles.link, { [styles.active]: router.route.includes('/hot') })}>
               <img src="/assets/hot.svg" />
               <Link href="/hot">Hot</Link>
             </div>

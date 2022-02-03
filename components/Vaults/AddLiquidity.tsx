@@ -283,7 +283,7 @@ const AddLiquidity = ({
             <img src="/assets/tokens/usdt.svg" />
           </div>
           <span className={styles["vaults-selector-title"]}>
-            WETH / USDT - 0.05%
+            {`WETH-USDT/0.05%`}
           </span>
         </div>
         <div className={styles["vaults-selector-combo"]}>
@@ -292,24 +292,24 @@ const AddLiquidity = ({
       </div>
 
       <div className={styles["vaults-row"]}>
-        <div className={styles["vaults-row-value"]}>
-          <span className={styles.name}>
-            APY
-            <TooltipIcon icon={faQuestionCircle} placement="top">
-              <span style={{ padding: "9px 15px" }}>
-                This APY is based on
+        <div className={cn(styles["vaults-row-value"], styles.apy)}>
+          <span className={styles.percent}>
+            100%
+          </span>
+          <span className={styles.value}>APY</span>
+          <TooltipIcon icon={faQuestionCircle} placement="top">
+            <span style={{ padding: "9px 15px" }}>
+              This APY is based on
                 <br /> the last 90 days of data
               </span>
-            </TooltipIcon>
-          </span>
-          <span className={styles.value}>100%</span>
+          </TooltipIcon>
         </div>
       </div>
 
       <span className={styles["vaults-content-subtitle"]}>Deposit Amounts</span>
       <div className={styles["vaults-row"]}>
         <DepositAmountInput
-          token="weth"
+          token="eth"
           decimals={18}
           inputValue={depositAmountOne.format}
           balance={balanceOne}
