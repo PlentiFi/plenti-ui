@@ -1,0 +1,78 @@
+.hot-container {
+    width: 577px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+
+
+    background: var(--color-background);
+    border: 1px solid var(--color-text);
+    border-radius: 4px;
+
+    padding: 61px 55px;
+}
+
+.hot-topic {
+    margin-bottom: 10px;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 119%;
+    /* or 29px */
+    letter-spacing: -0.01em;
+
+    color: #FFFDFA
+}
+
+.hot-date {
+    height: 25px;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 119%;
+    /* identical to box height, or 19px */
+    letter-spacing: -0.01em;
+
+    /* Grey 200 */
+    color: #8F8F8F;
+}
+
+.hot-bar {
+    color: #8F8F8F;
+    background-color: #8F8F8F;
+}
+
+.hot-body {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Grey 200 */
+    color: #8F8F8F;
+
+}
+
+.hot-body h1{
+
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 198.5%;
+    color: #cFcFcF;
+}
+
+.hot-body h2{
+
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 198.5%;
+    color: #cFcFcF;
+}
