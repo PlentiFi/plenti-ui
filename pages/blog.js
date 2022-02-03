@@ -26,7 +26,7 @@ async function fetchMyAPI() {
     return stuff
 }
 
-function Hot() {
+function Blog() {
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
     var stories = [];
@@ -123,4 +123,4 @@ function Hot() {
 
 //}
 
-export default Hot
+export default Blog
