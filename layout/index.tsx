@@ -35,11 +35,11 @@ export default function Layout({
   const [loading, connectWallet, library, disconnectWallet] = useWallet(dispatch)
   const [restored, setRestored] = useState(false)
 
-  useEffect(() => {
-    if (router.route === '/vaults' && !library) {
-      connectWallet()
-    }
-  }, [router, library])
+  // useEffect(() => {
+  //   if (router.route === '/vaults' && !library) {
+  //     connectWallet()
+  //   }
+  // }, [router, library])
 
   return (
     <>
@@ -85,7 +85,7 @@ export default function Layout({
             <div className={cn(styles.link, { [styles.active]: router.route.includes('/vaults') })}>
               <Link href="/vaults">Vaults</Link>
             </div>
-            <div className={styles.link}>
+            <div className={cn(styles.link, { [styles.active]: router.route.includes('/hot') })}>
               <img src="/assets/hot.svg" />
               <Link href="/hot">Hot</Link>
             </div>
@@ -108,6 +108,7 @@ export default function Layout({
                 dispatch,
                 library,
                 networks,
+                connectWallet
               })}
           </div>
         </div>

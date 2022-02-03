@@ -102,6 +102,15 @@
   align-items: center;
 }
 
+.vaults-row .vaults-row-value.apy {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .vaults-row .vaults-row-value .name {
   font-size: 12px;
   line-height: 17px;
@@ -112,9 +121,29 @@
   line-height: 27px;
 }
 
+.vaults-row .vaults-row-value.apy .percent {
+  font-size: 28px;
+  line-height: 38px;
+  color: var(--color-selectable-border);
+  font-weight: 700;
+}
+
+.vaults-row .vaults-row-value.apy .value {
+  font-size: 28px;
+  line-height: 38px;
+  padding-left: 8px;
+  font-weight: 700;
+}
+
 .vaults-row .vaults-row-value svg {
   height: 10px;
   margin-left: 3px;
+}
+
+.vaults-row .vaults-row-value.apy svg {
+  height: 15px;
+  margin-left: 5px;
+  margin-top: 7px;
 }
 
 .vaults-row .vaults-row-price {

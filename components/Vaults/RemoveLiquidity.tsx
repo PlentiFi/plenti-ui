@@ -24,7 +24,7 @@ const RemoveLiquidity = ({ library, state, onConnectWallet }) => {
       <div className={styles['vaults-row2']}>
         <div className={styles['valuts-receive']}>
           <div className={styles['valuts-receive-icon']}>
-            <img src="/assets/tokens/wbtc.svg" />
+            <img src="/assets/tokens/weth.svg" />
           </div>
           <div className={styles['valuts-receive-value']}>
             {0}
