@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { convertWeiToValue } from '../../utils/number'
+
 import styles from './DepositAmountInput.module.css'
 
-const DepositAmountInput = ({ token, inputValue, balance, onChange, onClickMax }) => {
+const DepositAmountInput = ({ token, decimals, inputValue, balance, onChange, onClickMax }) => {
   return (
     <div className={styles['deposit-amount-input-container']}>
       <div className={styles['deposit-input-icon']}>
@@ -16,7 +18,7 @@ const DepositAmountInput = ({ token, inputValue, balance, onChange, onClickMax }
           <input type="text" className={styles['deposit-input-text']} value={inputValue} onChange={(e) => onChange(e.target.value)} />
           <div className={styles['deposit-input-description']}>
             <span className={styles['balance']}>balance</span>
-            <span className={styles['value']}>{balance}</span>
+            <span className={styles['value']}>{convertWeiToValue(balance, decimals)}</span>
             <button className={styles['max']} onClick={(e) => onClickMax()}>max</button>
           </div>
         </div>
