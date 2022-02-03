@@ -1,7 +1,7 @@
 import * as EvmChains from 'evm-chains'
 import Web3 from 'web3'
 import ERC20 from './ABIs/ERC20.json'
-import Airdrop from './ABIs/Airdrop.json'
+import WETH_USDT_CELLAR_CONTRACT from './ABIs/WETH_USDT_CELLAR.json'
 import { ZERO, addresses } from 'utils/constants'
 
 const DEFAULT_REFRESH = 5 * 1000
@@ -133,15 +133,11 @@ class PlentiLibrary {
 
     if (addresses) {
       this.contracts = {
-        SommToken: new this.web3.eth.Contract(
-          ERC20 as any,
-          addresses.SommToken
+        cellarWethUsdt: new this.web3.eth.Contract(
+          WETH_USDT_CELLAR_CONTRACT as any,
+          addresses.CELLAR_WETH_USDT
         ),
-        Airdrop: new this.web3.eth.Contract(
-          Airdrop as any,
-          addresses.Airdrop
-        ),
-      }
+      };
 
       this.timers = [
         setInterval(
@@ -150,19 +146,26 @@ class PlentiLibrary {
         ),
       ]
 
+      const getERC20Methods = (address: string) => {
+        const contract = new this.web3.eth.Contract(ERC20 as any, address);
+
+        return (
+          contract && {
+            approve: send(contract.methods.approve),
+            getAllowance: call(contract.methods.allowance),
+            getBalance: call(contract.methods.balanceOf),
+            totalSupply: call(contract.methods.totalSupply),
+            decimals: call(contract.methods.decimals),
+          }
+        );
+      }
+
       this.methods = {
-        SommToken: {
-          approve: send(this.contracts.SommToken.methods.approve),
-          getAllowance: call(this.contracts.SommToken.methods.allowance),
-          getBalance: call(this.contracts.SommToken.methods.balanceOf),
-          totalSupply: call(this.contracts.SommToken.methods.totalSupply),
-          decimals: call(this.contracts.SommToken.methods.decimals),
+        cellarWethUsdt: {
+          cellarTickInfo: call(this.contracts.cellarWethUsdt.methods.cellarTickInfo),
+          addLiquidityForUniV3: send(this.contracts.cellarWethUsdt.methods.addLiquidityForUniV3),
         },
-        Airdrop: {
-          claim: send(this.contracts.Airdrop.methods.claim),
-          received: call(this.contracts.Airdrop.methods.received),
-          deadline: call(this.contracts.Airdrop.methods.deadline),
-        },
+        Market: getERC20Methods,
         web3: {
           getBlock: (field: string = "timestamp") =>
             new Promise((resolve, reject) =>

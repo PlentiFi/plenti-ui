@@ -66,3 +66,5 @@ export const compare = (x, y) => {
 
   return bnX.comparedTo(bnY)
 }
+
+export const convertWeiToValue = (value, decimals = 18) => (new BigNumber(value).dividedBy(10 ** decimals).toFixed(4, 1))

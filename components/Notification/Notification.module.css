@@ -1,0 +1,43 @@
+.notification-container {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 61px;
+  width: 100vw;
+  max-width: 100%;
+}
+
+.notification-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.notification-content.success {
+  background: var(--color-notification-info);
+  color: var(--color-background);
+}
+
+.notification-content.error {
+  background: var(--color-notification-error);
+  color: var(--color-text);
+}
+
+.notification-content.loading {
+  background: var(--color-notification-loading);
+  color: var(--color-background);
+}
+
+.notification-content svg {
+  height: 16.5px;
+  margin-left: 11px;
+  margin-right: 11px;
+}
+
+.notification-content a {
+  text-decoration: underline;
+}

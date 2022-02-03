@@ -50,7 +50,11 @@
   --color-opacity: rgb(236 195 202 / 65%);
   --color-opacity-04: rgb(255 255 255 / 40%);
   --color-black-04: rgb(0 0 0 / 40%);
-  
+
+  --color-notification-info: #BEE719;
+  --color-notification-error: #F04438;
+  --color-notification-loading: #CFCFD0;
+
   --gradient-fill: linear-gradient(to right, #ff9ca0, #fecfee);
   --gradient-title: linear-gradient(to right, #48e1a2, #9993e3);
   --gradient-title2: linear-gradient(to right, #b193cb, #60e4de);

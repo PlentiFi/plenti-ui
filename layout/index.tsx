@@ -26,46 +26,6 @@ const networkLabels = {
   97: 'Binance Testnet',
 }
 
-export function accountBalance(library, dispatch) {
-  if (!library || !library.initiated) return
-  const account = library.wallet.address
-  const fromWei = (value, decimals = 18) =>
-    decimals < 18
-      ? new BigNumber(value).div(10 ** decimals).toFixed(decimals, 0)
-      : library.web3.utils.fromWei(value)
-  if (!addresses[library.wallet.network]) {
-    return
-  }
-  Promise.all([
-    library.web3.eth.getBalance(account),
-    library.methods.SommToken.getBalance(account),
-    // library.methods.Airdrop.received(account),
-    // library.methods.Airdrop.deadline(),
-  ])
-    .then(
-      ([
-        _balance,
-        _sommBalance,
-        // _received,
-        // _deadline,
-      ]) => {
-        const balance = toNumber(fromWei(_balance))
-        const sommBalance = toNumber(fromWei(_sommBalance))
-        // const airdropReceived = _received
-        // const deadline = _deadline
-
-        dispatch({
-          type: 'balance',
-          payload: {
-            balance,
-            sommBalance,
-          },
-        })
-      }
-    )
-    .catch(console.log)
-}
-
 export default function Layout({
   children,
   router,
@@ -74,24 +34,12 @@ export default function Layout({
   const [state, dispatch] = useReducer(reducer, initState)
   const [loading, connectWallet, library, disconnectWallet] = useWallet(dispatch)
   const [restored, setRestored] = useState(false)
-  const [connectModalShow, setConnectModalShow] = useState(false)
-
-  const getBalance = () => {
-    accountBalance(library, dispatch)
-  }
 
   useEffect(() => {
-    if (library && state.account.address) {
-      if (balanceTimer) clearInterval(balanceTimer)
-      balanceTimer = setInterval(getBalance, FETCH_TIME * 1000)
-      getBalance()
+    if (router.route === '/vaults' && !library) {
+      connectWallet()
     }
-    return () => balanceTimer && clearInterval(balanceTimer)
-  }, [library, state.account.address])
-
-  const handleConnectNetwork = () => {
-    setConnectModalShow(true)
-  }
+  }, [router, library])
 
   return (
     <>
@@ -134,18 +82,18 @@ export default function Layout({
         </header>
         <div className={styles['main-container']}>
           <div className={styles['tab-container']}>
-            <div className={cn(styles.link, { [styles.active]: true })}>
+            <div className={cn(styles.link, { [styles.active]: router.route.includes('/vaults') })}>
               <Link href="/vaults">Vaults</Link>
             </div>
-            <div className={styles.link}>
-              <img src="/assets/hot.svg" />
-              <Link href="/vaults">Hot</Link>
+            <div className={cn(styles.link, { [styles.active]: router.route.includes('/blog') })}>
+              {/* <img src="/assets/hot.svg" /> */}
+              <Link href="/blog">Hot</Link>
             </div>
             <div className={styles.link}>
               <Link href="/vaults">Portfolio</Link>
             </div>
             <div className={styles.link}>
-              <Link href="/vaults">Events</Link>
+              <Link href="/event">Events</Link>
             </div>
             <div className={cn(styles.link, styles.social)}>
               <a href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.svg" /></a>
