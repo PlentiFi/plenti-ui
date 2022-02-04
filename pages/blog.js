@@ -26,7 +26,7 @@ async function fetchMyAPI() {
     return stuff
 }
 
-function Hot() {
+function Blog() {
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
     var stories = [];
@@ -48,14 +48,18 @@ function Hot() {
             })
     }, [])
 
-    if (isLoading) return <p>Loading...</p>
+    //if (isLoading) return <p>Loading...</p>
     if (data) {
         for (const story of data.data.stories) {
             if (story.published_at != null) {
-                stories.push({ story });
+                console.log(story.full_slug);
+                if (!story.full_slug.includes("events/") ) {
+                    stories.push({story});
+                }
             }
         }
     }
+
 
     console.log(stories)
 
@@ -123,4 +127,4 @@ function Hot() {
 
 //}
 
-export default Hot
+export default Blog

@@ -87,13 +87,13 @@ export default function Layout({
             </div>
             <div className={cn(styles.link, { [styles.active]: router.route.includes('/hot') })}>
               <img src="/assets/hot.svg" />
-              <Link href="/hot">Hot</Link>
+              <Link href="/blog">Hot</Link>
             </div>
             <div className={styles.link}>
               <Link href="/vaults">Portfolio</Link>
             </div>
             <div className={styles.link}>
-              <Link href="/event">Events</Link>
+              <Link href="/events">Events</Link>
             </div>
             <div className={cn(styles.link, styles.social)}>
               <a href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.svg" /></a>
