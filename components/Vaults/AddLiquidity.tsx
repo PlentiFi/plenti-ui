@@ -380,15 +380,15 @@ const AddLiquidity = ({
         <div className={styles["vaults-service-fee-panel"]}>
           <div className={styles.row}>
             <span>Service Fee:</span>
-            <span>0.3% annual</span>
+            <span>0% annual</span>
           </div>
           <div className={styles.row}>
             <span>Strategy Owner Fee:</span>
-            <span>0.1% monthly</span>
+            <span>0% monthly</span>
           </div>
           <div className={styles.row}>
             <span>Validator Fee:</span>
-            <span>0.05% annual</span>
+            <span>0% annual</span>
           </div>
         </div>
       </div>
