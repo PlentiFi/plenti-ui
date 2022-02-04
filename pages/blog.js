@@ -8,6 +8,33 @@ let Storyblok = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN
 })
 
+function tConvert(time) {
+    // Check correct time format and split into components
+    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) { // If time format correct
+        time = time.slice(1); // Remove full string match value
+        time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(''); // return adjusted time or original string
+}
+
+function getTime(dateTime) {
+    let hours = dateTime.getHours().toString();
+    if (hours.length == 1) {
+        hours = "0" + hours;
+    }
+    let minutes = dateTime.getMinutes().toString();
+    if (minutes.length == 1) {
+        minutes = "0" + minutes;
+    }
+    return hours + ":" + minutes;
+}
+
+function isEmpty(str) {
+    return (!str || str.length === 0 );
+}
 
 async function fetchMyAPI() {
     let stuff = [];
@@ -73,11 +100,35 @@ function Blog() {
                     <br/>
                     {
                         stories.map((story, index) => {
-                            console.log(story.story);
+                            let story_image = "";
+                            let the_story = story.story;
+                            if (the_story.content.image) {
+                                story_image = <div ><img className="hot-image" img src={ "https:" + the_story.content.image}/></div>
+                            }
+
+                            let start_date = "";
+                            let end_date = "";
+                            let start_time = "";
+                            let end_time = "";
+                            let event_time = "";
+                            let s_date;
+                            let e_date;
+                            let content = story.story
+                            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+                            if (content.first_published_at != "") {
+                                s_date = new Date(content.first_published_at);
+
+                                start_date = s_date.toLocaleDateString(undefined, options);
+                                start_time = getTime(s_date);
+                            }
+
                             return(
                                 <div>
+                                    {story_image}
+                                    <br/>
                                     <div className="hot-topic">{story.story.content.title}</div>
-                                    <div className="hot-date">{story.story.first_published_at}</div>
+                                    <div className="hot-date">{start_date}</div>
                                     <hr className="hot-bar"/>
                                     <div className="hot-body">{story.story.content.intro}</div><br/>
                                     <div className="hot-body">{render(story.story.content.long_text, {

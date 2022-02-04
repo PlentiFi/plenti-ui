@@ -63,16 +63,24 @@
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 198.5%;
+    line-height: 180.5%  !important;
     color: #cFcFcF;
 }
 
-.hot-body h2{
+.hot-body h2 {
 
     font-family: Work Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 198.5%;
+    line-height: 180.5% !important;
     color: #cFcFcF;
+}
+
+.hot-body p {
+    margin-bottom: 10px !important;
+}
+
+.hot-image {
+    width: 450px;
 }
