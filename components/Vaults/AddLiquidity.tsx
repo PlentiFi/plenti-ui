@@ -89,6 +89,12 @@ const AddLiquidity = ({
     current: "",
   });
 
+  const [serviceFee, setServiceFee] = useState({
+    service: 0,
+    owner: 0,
+    validator: 0
+  })
+
   const [pool, setPool] = useState(null);
 
   const initBalance = async () => {
@@ -173,6 +179,18 @@ const AddLiquidity = ({
     });
 
     setPool(uniPool);
+
+    /**
+     * TBD, Currently 0
+     */
+    const managementFee = await library.methods.cellarWethUsdt.managementFee();
+    const performanceFee = await library.methods.cellarWethUsdt.performanceFee();
+
+    setServiceFee({
+      service: managementFee,
+      owner: managementFee,
+      validator: performanceFee
+    })
   };
 
   // tokenNum: 0 or 1 => token0 or token1
@@ -380,15 +398,15 @@ const AddLiquidity = ({
         <div className={styles["vaults-service-fee-panel"]}>
           <div className={styles.row}>
             <span>Service Fee:</span>
-            <span>0.3% annual</span>
+            <span>{serviceFee.service}% annual</span>
           </div>
           <div className={styles.row}>
             <span>Strategy Owner Fee:</span>
-            <span>0.1% monthly</span>
+            <span>{serviceFee.owner}% monthly</span>
           </div>
           <div className={styles.row}>
             <span>Validator Fee:</span>
-            <span>0.05% annual</span>
+            <span>{serviceFee.validator}% annual</span>
           </div>
         </div>
       </div>
