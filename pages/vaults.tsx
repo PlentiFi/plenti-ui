@@ -106,6 +106,8 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
         setStatus(runningStatus.STATUS_ERROR);
       }
     } catch (e) {
+      console.log('--------------------------------------', e.code)
+      console.log(e)
       if ('code' in e && e.code === 4001) {
         setStatus(runningStatus.STATUS_IDLE)
       }
