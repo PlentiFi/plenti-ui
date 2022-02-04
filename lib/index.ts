@@ -163,6 +163,8 @@ class PlentiLibrary {
       this.methods = {
         cellarWethUsdt: {
           cellarTickInfo: call(this.contracts.cellarWethUsdt.methods.cellarTickInfo),
+          managementFee: call(this.contracts.cellarWethUsdt.methods.managementFee),
+          performanceFee: call(this.contracts.cellarWethUsdt.methods.performanceFee),
           addLiquidityForUniV3: send(this.contracts.cellarWethUsdt.methods.addLiquidityForUniV3),
         },
         Market: getERC20Methods,
