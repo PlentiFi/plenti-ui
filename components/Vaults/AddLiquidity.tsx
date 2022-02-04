@@ -7,7 +7,7 @@ import {
 
 import BigNumber from "bignumber.js";
 
-import { Price, Token } from "@uniswap/sdk-core";
+import { Price, Token, CurrencyAmount } from "@uniswap/sdk-core";
 import {
   FeeAmount,
   Pool,
@@ -65,15 +65,15 @@ const AddLiquidity = ({
 }) => {
   const [depositAmountOne, setDepositAmountOne] = useState<FormatValue>({
     value: new BigNumber(0),
-    format: "0",
+    format: "",
   });
   const [depositAmountTwo, setDepositAmountTwo] = useState<FormatValue>({
     value: new BigNumber(0),
-    format: "0",
+    format: "",
   });
 
-  const [balanceOne, setBalanceOne] = useState(1.091);
-  const [balanceTwo, setBalanceTwo] = useState(0.9101);
+  const [balanceOne, setBalanceOne] = useState(0);
+  const [balanceTwo, setBalanceTwo] = useState(0);
 
   const [error, setError] = useState<Status>("success");
 
@@ -177,52 +177,76 @@ const AddLiquidity = ({
 
   // tokenNum: 0 or 1 => token0 or token1
   const handleUpdateInputAmount = (amount, tokenNum) => {
-    const decimals =
-      tokenNum === 0 ? pool.token0.decimals : pool.token1.decimals;
-
-    const val = {
-      format: amount,
-      value: new BigNumber(amount).multipliedBy(10 ** decimals),
-    };
-
-    if (tokenNum === 0) {
-      setDepositAmountOne(val);
-    } else {
-      setDepositAmountTwo(val);
+    if (!(state.account.address && library)) {
+      return
     }
 
-    const decimals2 =
-      tokenNum === 0 ? pool.token1.decimals : pool.token0.decimals;
-    // const diff2 = (Number(priceRange.min) + Number(priceRange.max)) / 2 - Number(priceRange.current)
-    // console.log('diff2', diff2)
+    if (isNaN(amount)) {
+      amount = 0
+    }
 
-    // const diff = new BigNumber(priceRange.current).plus(diff2)
-
-    const diff = (Number(priceRange.min) + Number(priceRange.max)) / 2
-    
-    const priceDiff = tokenNum === 0 ? diff : new BigNumber(1).dividedBy(diff);
-    const val2 = {
-      format: new BigNumber(amount)
-        .multipliedBy(priceDiff)
-        .toFixed(4),
-      value: new BigNumber(amount)
-        .multipliedBy(10 ** decimals2)
-        .multipliedBy(priceDiff),
-    };
-
-    console.log("************************");
-    console.log(val.format, val2.format);
-    console.log("************************");
     if (tokenNum === 0) {
-      setDepositAmountTwo(val2);
-    } else {
-      setDepositAmountOne(val2);
+      const decimals = pool.token0.decimals
+      const decimals2 = pool.token1.decimals;
+
+      const val = {
+        format: amount === 0 ? '' : amount,
+        value: new BigNumber(amount).multipliedBy(10 ** decimals),
+      };
+
+      const position = Position.fromAmount0({
+        pool: pool,
+        tickLower: Number(poolTick.tickLower),
+        tickUpper: Number(poolTick.tickUpper),
+        amount0: new BigNumber(amount).multipliedBy(10 ** decimals).toNumber(),
+        useFullPrecision: true, // we want full precision for the theoretical position
+      })
+
+      const price = CurrencyAmount.fromRawAmount(pool.token1, position.amount1.quotient).toSignificant()
+
+      const val2 = {
+        format: price,
+        value: new BigNumber(price).multipliedBy(10 ** decimals2)
+      }
+
+      setDepositAmountOne(val)
+      setDepositAmountTwo(val2)
+    }
+
+    if (tokenNum === 1) {
+      const decimals = pool.token0.decimals
+      const decimals2 = pool.token1.decimals;
+
+      const val = {
+        format: amount === 0 ? '' : amount,
+        value: new BigNumber(amount).multipliedBy(10 ** decimals2),
+      };
+
+      const position = Position.fromAmount1({
+        pool: pool,
+        tickLower: Number(poolTick.tickLower),
+        tickUpper: Number(poolTick.tickUpper),
+        amount1: new BigNumber(amount).multipliedBy(10 ** decimals2).toNumber(),
+      })
+
+      const price = CurrencyAmount.fromRawAmount(pool.token0, position.amount0.quotient).toSignificant()
+
+      const val2 = {
+        format: price,
+        value: new BigNumber(price).multipliedBy(10 ** decimals)
+      }
+
+      setDepositAmountOne(val2)
+      setDepositAmountTwo(val)
     }
   };
 
   useEffect(() => {
     if (status === runningStatus.STATUS_LOADING) {
-      setError("loading");
+      setError("loading")
+    }
+    if (status === runningStatus.STATUS_IDLE) {
+      setError("success")
     }
   }, [status]);
 
