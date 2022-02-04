@@ -84,8 +84,8 @@ const AddLiquidity = ({
   });
 
   const [priceRange, setPriceRange] = useState({
-    min: "",
-    max: "",
+    min: " ",
+    max: " ",
     current: "",
   });
 
