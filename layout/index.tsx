@@ -93,7 +93,7 @@ export default function Layout({
               <Link href="/vaults">Portfolio</Link>
             </div>
             <div className={styles.link}>
-              <Link href="/event">Events</Link>
+              <Link href="/events">Events</Link>
             </div>
             <div className={cn(styles.link, styles.social)}>
               <a href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.svg" /></a>
