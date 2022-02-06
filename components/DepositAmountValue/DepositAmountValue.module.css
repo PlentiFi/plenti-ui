@@ -42,3 +42,26 @@
   font-weight: 400;
   color: var(--color-text-disable);
 }
+
+@media screen and (max-width: 425px) {
+  .deposit-value-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .deposit-input-icon img {
+    height: 20px !important;
+  }
+
+  .deposit-value-content {
+    height: 39px;
+  }
+
+  .deposit-value-content .balance {
+    font-size: 16px;
+  }
+
+  .deposit-value-content .usd {
+    font-size: 10px;
+  }
+}

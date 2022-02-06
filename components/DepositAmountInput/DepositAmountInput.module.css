@@ -77,3 +77,33 @@
   margin-left: 4px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 425px) {
+  .deposit-input-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .deposit-input-icon img {
+    height: 26px;
+  }
+
+  .deposit-input-content {
+    height: 40px;
+  }
+
+  .deposit-input-label {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .deposit-input-description {
+    font-size: 10px;
+    margin-right: 8px;
+  }
+
+  .deposit-input-text {
+    font-size: 16px;
+    padding-right: 10px;
+  }
+}

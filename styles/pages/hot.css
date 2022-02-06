@@ -13,73 +13,81 @@
 }
 
 .hot-topic {
-    margin-bottom: 10px;
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 119%;
-    /* or 29px */
-    letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 119%;
+  /* or 29px */
+  letter-spacing: -0.01em;
 
-    color: #FFFDFA
+  color: #fffdfa;
 }
 
 .hot-date {
-    height: 25px;
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 119%;
-    /* identical to box height, or 19px */
-    letter-spacing: -0.01em;
+  height: 25px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 119%;
+  /* identical to box height, or 19px */
+  letter-spacing: -0.01em;
 
-    /* Grey 200 */
-    color: #8F8F8F;
+  /* Grey 200 */
+  color: #8f8f8f;
 }
 
 .hot-bar {
-    color: #8F8F8F;
-    background-color: #8F8F8F;
+  color: #8f8f8f;
+  background-color: #8f8f8f;
 }
 
 .hot-body {
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
 
-    /* Grey 200 */
-    color: #8F8F8F;
-
+  /* Grey 200 */
+  color: #8f8f8f;
 }
 
-.hot-body h1{
-
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 180.5%  !important;
-    color: #cFcFcF;
+.hot-body h1 {
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 198.5%;
+  color: #cfcfcf;
 }
 
 .hot-body h2 {
-
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 180.5% !important;
-    color: #cFcFcF;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 198.5%;
+  color: #cfcfcf;
 }
 
-.hot-body p {
-    margin-bottom: 10px !important;
-}
+@media screen and (max-width: 425px) {
+  .hot-container {
+    width: 320px;
+    padding: 61px 25px;
+  }
 
-.hot-image {
-    width: 100%;
+  .hot-topic {
+    font-size: 16px;
+  }
+
+  .hot-date {
+    font-size: 14px;
+  }
+
+  .hot-body {
+    font-size: 12px;
+  }
 }

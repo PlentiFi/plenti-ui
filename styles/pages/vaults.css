@@ -64,3 +64,26 @@
   width: 100%;
   margin-top: 16px;
 }
+
+@media screen and (max-width: 425px) {
+  .vaults-container {
+    max-width: 290px;
+    padding: 61px 18px;
+    margin-top: 40px;
+  }
+
+  .vaults-title {
+    width: 105px;
+    height: 36px;
+    margin-top: -80px;
+  }
+
+  .vaults-title h1 {
+    font-size: 22px;
+  }
+
+  .vaults-tab-menu {
+    width: 155px;
+    margin: 30px auto 0px;
+  }
+}

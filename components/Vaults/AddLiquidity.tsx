@@ -62,6 +62,7 @@ const AddLiquidity = ({
   state,
   onConnectWallet,
   status,
+  changePriceRange
 }) => {
   const [depositAmountOne, setDepositAmountOne] = useState<FormatValue>({
     value: new BigNumber(0),
@@ -84,8 +85,8 @@ const AddLiquidity = ({
   });
 
   const [priceRange, setPriceRange] = useState({
-    min: "",
-    max: "",
+    min: " ",
+    max: " ",
     current: "",
   });
 
@@ -177,6 +178,12 @@ const AddLiquidity = ({
       max: priceMax,
       current: priceCurrent,
     });
+
+    changePriceRange({
+      min: priceMin,
+      max: priceMax,
+      current: priceCurrent,
+    })
 
     setPool(uniPool);
 
@@ -325,7 +332,8 @@ const AddLiquidity = ({
             <img src="/assets/tokens/usdt.svg" />
           </div>
           <span className={styles["vaults-selector-title"]}>
-            {`WETH-USDT/0.05%`}
+            <span className={styles.desktop}>{`WETH-USDT/0.05%`}</span>
+            <span className={styles.mobile}>{`WETH/USDT`}</span>
           </span>
         </div>
         <div className={styles["vaults-selector-combo"]}>

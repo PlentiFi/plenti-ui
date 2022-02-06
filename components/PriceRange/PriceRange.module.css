@@ -22,3 +22,17 @@
   font-size: 12px;
   color: var(--color-text-disable);
 }
+
+@media screen and (max-width: 425px) {
+  .price-range-item .min {
+    font-size: 10px;
+  }
+
+  .price-range-item .per {
+    font-size: 10px;
+  }
+
+  .price-range-item .value {
+    font-size: 16px;
+  }
+}

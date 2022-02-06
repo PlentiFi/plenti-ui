@@ -85,3 +85,29 @@
   /* max-width: 100%; */
   margin-top: 50px;
 }
+
+@media screen and (max-width: 425px) {
+  .main-container .tab-container {
+    widows: 327px;
+    height: 35px;
+    padding: 3px;
+  }
+
+  .main-container .tab-container .link {
+    width: 92px;
+    font-size: 12px;
+  }
+
+  .main-container .tab-container .link.social img {
+    height: 13px;
+    margin-top: 3px;
+  }
+
+  .header {
+    padding: 0px 10px;
+  }
+
+  .headerLogo img {
+    width: 125px;
+  }
+}
