@@ -3,10 +3,10 @@
   background: rgba(0, 0, 0, 0.9);
   width: 100vw;
   height: 100vh;
-  max-width: 100%;
   z-index: 400;
   left: 0px;
   top: 0px;
+  max-width: 100%;
 }
 
 .modal-container {
@@ -170,4 +170,42 @@
   font-size: 20px;
   font-weight: 500;
   color: var(--color-background);
+}
+
+@media screen and (max-width: 425px) {
+  .modal-content {
+    min-width: 221px;
+    padding: 12px;
+  }
+
+  .modal-view-title {
+    font-size: 13px;
+  }
+
+  .modal-select-vault-search-item {
+    height: 38px;
+  }
+
+  .modal-select-vault-search-item .icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .modal-select-vault-search-item .name {
+    font-size: 12px;
+  }
+
+  .modal-select-vault-search-item .fee {
+    font-size: 10.6px;
+  }
+
+  .modal-add-liqudity-confirm .item {
+    height: 55px;
+  }
+
+  .modal-add-liqudity-confirm .add-liquidity-button {
+    height: 35px;
+    font-size: 16px;
+    margin-top: 25px;
+  }
 }

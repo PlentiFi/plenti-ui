@@ -42,7 +42,7 @@ export default function Account({
       ) : (
         <div className={styles.info}>
           <img src='/assets/tokens/eth.svg' className={styles.eth}/>
-          <span>Ethereum</span>
+          <span className={styles.desktop}>Ethereum</span>
           <img src='/assets/connected.svg' className={styles.connected} />
           <span>{`${account.address.substring(0, 7)}....${account.address.substring(account.address.length - 4)}`}</span>
         </div>

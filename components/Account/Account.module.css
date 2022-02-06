@@ -56,3 +56,30 @@
   height: 14px;
   margin: 0px 23px;
 }
+
+@media screen and (max-width: 425px) {
+  .account-button-container {
+    height: 32px;
+  }
+
+  .account-button-container .connect-button {
+    font-size: 13px;
+    padding: 5px;
+  }
+
+  .account-button-container .info .desktop {
+    display: none;
+  }
+
+  .account-button-container .info .connected {
+    margin: 0px 10px;
+  }
+
+  .account-button-container .info {
+    padding: 0px 10px;
+  }
+
+  .account-button-container .info .eth {
+    display: none;
+  }
+}

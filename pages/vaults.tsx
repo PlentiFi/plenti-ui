@@ -39,6 +39,12 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
   const [status, setStatus] = useState(runningStatus.STATUS_IDLE);
   const [message, setMessage] = useState("");
 
+  const [priceRange, setPriceRange] = useState({
+    min: " ",
+    max: " ",
+    current: "",
+  });
+
   const handleAddLiquidity = async () => {
     setModalConfirmAdd(false);
 
@@ -156,6 +162,9 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
             state={state}
             onConnectWallet={connectWallet}
             status={status}
+            changePriceRange={(pr) => {
+              setPriceRange(pr)
+            }}
           />
         )}
         {tab === "remove" && (
@@ -174,6 +183,7 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
       {modalConfirmAdd && (
         <ModalContainer onClose={(e) => setModalConfirmAdd(false)}>
           <ContentAddLiquidity
+            priceRange={priceRange}
             onConfirm={() => handleAddLiquidity()}
             amountOne={depositAmountOne}
             amountTwo={depositAmountTwo}

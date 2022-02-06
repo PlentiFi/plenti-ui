@@ -16,7 +16,7 @@ const ContentSelectVault = () => {
         className={styles["search-token-amm"]}
         placeholder="Search token or AMM"
       /> */}
-      <div className={styles["modal-view-divider"]} style={{ marginTop: 43, marginBottom: 23 }}/>
+      <div className={styles["modal-view-divider"]} style={{ marginTop: 26, marginBottom: 20 }}/>
 
       <div className={styles["modal-select-vault-search-result"]}>
         <div className={styles["modal-select-vault-search-item"]}>
