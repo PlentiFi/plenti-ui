@@ -73,7 +73,7 @@
   color: #cfcfcf;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .hot-container {
     width: 320px;
     padding: 61px 25px;

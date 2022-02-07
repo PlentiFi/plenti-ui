@@ -23,7 +23,7 @@
   color: var(--color-text-disable);
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .price-range-item .min {
     font-size: 10px;
   }

@@ -86,7 +86,7 @@
   margin-top: 50px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .main-container .tab-container {
     widows: 327px;
     height: 35px;

@@ -172,7 +172,7 @@
   color: var(--color-background);
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .modal-content {
     min-width: 221px;
     padding: 12px;
