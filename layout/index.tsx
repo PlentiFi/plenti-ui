@@ -70,6 +70,8 @@ export default function Layout({
         <header className={styles.header}>
           <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti-ball.png" alt="plenti" /></a>
           <div className={styles.headerConnect}>
+            <a className={styles.social} href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.png" /></a>
+            <a className={styles.social} href="https://twitter.com/plenti_fi" target="_blank"> <img src="/assets/socials/twitter.png" /></a >
             <Account
               library={library}
               {...state}
@@ -92,14 +94,11 @@ export default function Layout({
               <img src="/assets/hot.png" />
               <Link href="/blog">Hot</Link>
             </div>
-            <div className={styles.link}>
+            <div className={cn(styles.link, { [styles.active]: router.route.includes('/events') })}>
               <Link href="/events">Events</Link>
             </div>
-            <div className={cn(styles.link, styles.social)}>
-              <a href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.svg" /></a>
-            </div>
-            <div className={cn(styles.link, styles.social)}>
-              <a href="https://twitter.com/plenti_fi" target="_blank"> <img src="/assets/socials/twitter.svg" /></a >
+            <div className={styles.link}>
+              <Link href="/vaults">Token</Link>
             </div>
           </div>
           <div className={styles['page-container']}>

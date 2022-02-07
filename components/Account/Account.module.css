@@ -59,6 +59,8 @@
 
 @media screen and (max-width: 500px) {
   .account-button-container {
+    min-width: 100px;
+    width: 130px;
     height: 32px;
   }
 
@@ -72,11 +74,12 @@
   }
 
   .account-button-container .info .connected {
-    margin: 0px 10px;
+    margin: 0px 3px;
   }
 
   .account-button-container .info {
     padding: 0px 10px;
+    font-size: 12px;
   }
 
   .account-button-container .info .eth {
