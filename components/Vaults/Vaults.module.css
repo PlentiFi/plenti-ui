@@ -309,7 +309,7 @@
   margin-bottom: 5px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .vaults-selector {
     height: 35px;
   }

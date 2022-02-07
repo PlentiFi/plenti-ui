@@ -57,7 +57,7 @@
   margin: 0px 23px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .account-button-container {
     height: 32px;
   }

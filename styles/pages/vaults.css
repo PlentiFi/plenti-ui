@@ -65,7 +65,7 @@
   margin-top: 16px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .vaults-container {
     max-width: 290px;
     padding: 61px 18px;
