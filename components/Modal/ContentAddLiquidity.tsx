@@ -8,7 +8,7 @@ import PriceRange from '../PriceRange'
 import styles from "./Modal.module.css";
 import cn from "classname";
 
-const ContentAddLiquidity = ({ onConfirm, amountOne, amountTwo, priceRange }) => {
+const ContentAddLiquidity = ({ onConfirm, amountOne, amountTwo, priceRange, ethPrice }) => {
   return (
     <div className={styles["modal-add-liqudity-confirm"]}>
       <span className={styles["modal-view-title"]}>Confirm Add Liquidity</span>
@@ -30,7 +30,7 @@ const ContentAddLiquidity = ({ onConfirm, amountOne, amountTwo, priceRange }) =>
       </div>
 
       <div className={styles["inputed-value"]}>
-        <DepositAmountValue token='weth' balance={amountOne.format} usdBalance={new BigNumber(amountOne.value).dividedBy(10 ** 18).multipliedBy(3007).toFixed(2)} />
+        <DepositAmountValue token='weth' balance={amountOne.format} usdBalance={new BigNumber(amountOne.value).dividedBy(10 ** 18).multipliedBy(new BigNumber(ethPrice)).toFixed(2)} />
         <DepositAmountValue token='usdt' balance={amountTwo.format} usdBalance={amountTwo.format} />
       </div>
 

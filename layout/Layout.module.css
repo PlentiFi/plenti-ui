@@ -19,7 +19,12 @@
   flex: 1;
   display: flex;
   justify-content: right;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.headerConnect .social img {
+  width: 44px;
+  margin-right: 9px;
 }
 
 /* page container */
@@ -62,10 +67,6 @@
   font-weight: 600;
 }
 
-.main-container .tab-container .link.social {
-  width: 70px;
-}
-
 .main-container .tab-container .link.active {
   background: var(--color-tab-selected-bg);
   color: var(--color-tab-selected-text);
@@ -87,6 +88,11 @@
 }
 
 @media screen and (max-width: 500px) {
+  .headerConnect .social img {
+    width: 30px;
+    margin-right: 4px;
+  }
+
   .main-container .tab-container {
     widows: 327px;
     height: 35px;

@@ -114,7 +114,9 @@ const AddLiquidity = ({
       library.addresses.UNISWAP_WETH_USDT
     );
 
-    console.log(pool, library.wallet.network);
+    const { ethPriceUSD } = bundle
+
+    console.log(pool, library.wallet.network, ethPriceUSD);
 
     const baseTokenCurrency = new Token(
       Number(library.wallet.network),
@@ -183,7 +185,7 @@ const AddLiquidity = ({
       min: priceMin,
       max: priceMax,
       current: priceCurrent,
-    })
+    }, ethPriceUSD)
 
     setPool(uniPool);
 
