@@ -45,6 +45,8 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
     current: "",
   });
 
+  const [currentEthPrice, setCurrentEthPrice] = useState(0)
+
   const handleAddLiquidity = async () => {
     setModalConfirmAdd(false);
 
@@ -162,8 +164,10 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
             state={state}
             onConnectWallet={connectWallet}
             status={status}
-            changePriceRange={(pr) => {
+            changePriceRange={(pr, ethPrice) => {
+              console.log('ethPrice', ethPrice)
               setPriceRange(pr)
+              setCurrentEthPrice(ethPrice)
             }}
           />
         )}
@@ -187,6 +191,7 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
             onConfirm={() => handleAddLiquidity()}
             amountOne={depositAmountOne}
             amountTwo={depositAmountTwo}
+            ethPrice={currentEthPrice}
           />
         </ModalContainer>
       )}
