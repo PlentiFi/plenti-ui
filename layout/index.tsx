@@ -26,6 +26,8 @@ const networkLabels = {
   97: 'Binance Testnet',
 }
 
+type MENU = 'vault' | 'portfolio' | 'blog' | 'events' | 'token'
+
 export default function Layout({
   children,
   router,
@@ -40,6 +42,30 @@ export default function Layout({
   //     connectWallet()
   //   }
   // }, [router, library])
+
+  const [menu, setMenu] = useState<MENU>('vault')
+
+  useEffect(() => {
+    if (router.route.includes('/vaults')) {
+      setMenu('vault')
+      return
+    }
+
+    if (router.route.includes('/blog/token')) {
+      setMenu('token')
+      return
+    }
+
+    if (router.route.includes('/blog')) {
+      setMenu('blog')
+      return
+    }
+
+    if (router.route.includes('/events')) {
+      setMenu('events')
+      return
+    }
+  }, [router.route])
 
   return (
     <>
@@ -84,21 +110,21 @@ export default function Layout({
         </header>
         <div className={styles['main-container']}>
           <div className={styles['tab-container']}>
-            <div className={cn(styles.link, { [styles.active]: router.route.includes('/vaults') })}>
+            <div className={cn(styles.link, { [styles.active]: menu === 'vault' })}>
               <Link href="/vaults">Vaults</Link>
             </div>
             <div className={styles.link}>
               <Link href="/vaults">Portfolio</Link>
             </div>
-            <div className={cn(styles.link, { [styles.active]: router.route.includes('/blog') })}>
+            <div className={cn(styles.link, { [styles.active]: menu === 'blog' })}>
               <img src="/assets/hot.png" />
               <Link href="/blog">Hot</Link>
             </div>
-            <div className={cn(styles.link, { [styles.active]: router.route.includes('/events') })}>
+            <div className={cn(styles.link, { [styles.active]: menu === 'events' })}>
               <Link href="/events">Events</Link>
             </div>
-            <div className={styles.link}>
-              <Link href="/vaults">Token</Link>
+            <div className={cn(styles.link, { [styles.active]: menu === 'token' })}>
+              <Link href="/blog/token">Token</Link>
             </div>
           </div>
           <div className={styles['page-container']}>

@@ -10,9 +10,9 @@
 
 .account-button-container .connect-button {
   width: 100%;
-  background: var(--color-background);
-  border: 1px solid var(--color-caption);
-  color: var(--color-caption);
+  background: var(--color-caption);
+  border: 1px solid var(--color-background);
+  color: var(--color-background);
   
   font-size: 16px;
   font-weight: 600;
