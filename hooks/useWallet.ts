@@ -89,10 +89,10 @@ export default function useWallet(dispatch) {
   function connectWallet(refresh = false) {
     getProvider(refresh).then(async (provider) => {
       if (provider){ 
-        await provider.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: `0x${DEFAULT_NETWORK.toString(16)}` }],
-        });
+        // await provider.request({
+        //   method: "wallet_switchEthereumChain",
+        //   params: [{ chainId: `0x${DEFAULT_NETWORK.toString(16)}` }],
+        // });
 
         initLibrary(provider)
       }
