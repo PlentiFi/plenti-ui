@@ -3,6 +3,7 @@ import Web3Modal from 'web3modal'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import PlentiLibrary from "lib/index";
 import { addresses, DEFAULT_NETWORK } from 'utils/constants'
+import { isMobileOnly } from "react-device-detect";
 
 let web3Modal
 
@@ -89,10 +90,13 @@ export default function useWallet(dispatch) {
   function connectWallet(refresh = false) {
     getProvider(refresh).then(async (provider) => {
       if (provider){ 
-        // await provider.request({
-        //   method: "wallet_switchEthereumChain",
-        //   params: [{ chainId: `0x${DEFAULT_NETWORK.toString(16)}` }],
-        // });
+        console.log("isMobileOnly", isMobileOnly);
+        if (!isMobileOnly) {
+          await provider.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: `0x${DEFAULT_NETWORK.toString(16)}` }],
+          });
+        }
 
         initLibrary(provider)
       }
