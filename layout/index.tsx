@@ -51,7 +51,7 @@ export default function Layout({
       return
     }
 
-    if (router.route.includes('/blog/token')) {
+    if (router.route.includes('/token')) {
       setMenu('token')
       return
     }
@@ -88,16 +88,6 @@ export default function Layout({
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" />
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-25L9M9JDDF"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-25L9M9JDDF');
-        </script>
       </Head>
       <div className='page-background'>
         <div className='ball'></div>
@@ -134,7 +124,7 @@ export default function Layout({
               <Link href="/events">Events</Link>
             </div>
             <div className={cn(styles.link, { [styles.active]: menu === 'token' })}>
-              <Link href="/blog/token">Token</Link>
+              <Link href="/token">Token</Link>
             </div>
           </div>
           <div className={styles['page-container']}>
