@@ -395,13 +395,13 @@ const AddLiquidity = ({
           className={styles["vaults-row-price"]}
           title="min price"
           value={priceRange.min}
-          description="ETH per USDT"
+          description="USDT per ETH"
         />
         <PriceRange
           className={styles["vaults-row-price"]}
           title="max price"
           value={priceRange.max}
-          description="ETH per USDT"
+          description="USDT per ETH"
         />
       </div>
       <div className={styles["vaults-row"]}>
