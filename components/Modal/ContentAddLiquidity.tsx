@@ -39,8 +39,8 @@ const ContentAddLiquidity = ({ onConfirm, amountOne, amountTwo, priceRange, ethP
       </div>
 
       <div className={styles['price-range']}>
-        <PriceRange className={styles.item} title="min price" value={priceRange.min} description="ETH per USDT" />
-        <PriceRange className={styles.item} title="max price" value={priceRange.max} description="ETH per USDT" />
+        <PriceRange className={styles.item} title="min price" value={priceRange.min} description="USDT per ETH" />
+        <PriceRange className={styles.item} title="max price" value={priceRange.max} description="USDT per ETH" />
       </div>
 
       <button className={styles['add-liquidity-button']} onClick={(e) => onConfirm()}>Confirm</button>

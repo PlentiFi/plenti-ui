@@ -7,15 +7,8 @@ import {
 
 import BigNumber from "bignumber.js";
 
-import { Price, Token, CurrencyAmount } from "@uniswap/sdk-core";
-import {
-  FeeAmount,
-  Pool,
-  Position,
-  priceToClosestTick,
-  tickToPrice,
-  TickMath,
-} from "@uniswap/v3-sdk";
+import { CurrencyAmount } from "@uniswap/sdk-core";
+import { Position } from "@uniswap/v3-sdk";
 import { FormatValue } from "../../types";
 
 import DepositAmountInput from "../DepositAmountInput";
@@ -23,10 +16,8 @@ import PriceRange from "../PriceRange";
 import Account from "../Account";
 import TooltipIcon from "../TooltipIcon";
 
-import { isNaN, compare, convertWeiToValue } from "../../utils/number";
+import { isNaN, compare } from "../../utils/number";
 import { runningStatus } from "../../utils/constants";
-import { getUniswapV3PoolOverview } from "../../utils/uniswap-v3";
-import { getPriceFromTick } from "../../utils/math";
 
 import cn from "classname";
 import styles from "./Vaults.module.css";
@@ -62,7 +53,10 @@ const AddLiquidity = ({
   state,
   onConnectWallet,
   status,
-  changePriceRange
+  pool,
+  poolTick,
+  priceRange,
+  serviceFee,
 }) => {
   const [depositAmountOne, setDepositAmountOne] = useState<FormatValue>({
     value: new BigNumber(0),
@@ -78,27 +72,7 @@ const AddLiquidity = ({
 
   const [error, setError] = useState<Status>("success");
 
-  const [poolTick, setPoolTick] = useState({
-    tickLower: 0,
-    tickUpper: 0,
-    currentTick: 0,
-  });
-
-  const [priceRange, setPriceRange] = useState({
-    min: " ",
-    max: " ",
-    current: "",
-  });
-
-  const [serviceFee, setServiceFee] = useState({
-    service: 0,
-    owner: 0,
-    validator: 0
-  })
-
-  const [pool, setPool] = useState(null);
-
-  const [priceShowType, setPriceShowType] = useState(0)
+  const [priceShowType, setPriceShowType] = useState(0);
 
   const initBalance = async () => {
     console.log(state.account.address, library);
@@ -111,115 +85,22 @@ const AddLiquidity = ({
     setBalanceTwo(usdtBalance);
   };
 
-  const initPool = async () => {
-    const { pool, bundle } = await getUniswapV3PoolOverview(
-      library.addresses.UNISWAP_WETH_USDT
-    );
-
-    const { ethPriceUSD } = bundle
-
-    console.log(pool, library.wallet.network, ethPriceUSD);
-
-    const baseTokenCurrency = new Token(
-      Number(library.wallet.network),
-      pool.token0.id,
-      Number(pool.token0.decimals),
-      pool.token0.symbol,
-      pool.token0.name
-    );
-
-    const quoteTokenCurrency = new Token(
-      Number(library.wallet.network),
-      pool.token1.id,
-      Number(pool.token1.decimals),
-      pool.token1.symbol,
-      pool.token1.name
-    );
-
-    const uniPool = new Pool(
-      baseTokenCurrency,
-      quoteTokenCurrency,
-      (parseInt(pool.feeTier, 10) as any) as FeeAmount,
-      pool.sqrtPrice,
-      pool.liquidity,
-      parseInt(pool.tick || "0", 10),
-      []
-    );
-
-    console.log("uniPool", uniPool);
-    const {
-      tickLower,
-      tickUpper,
-    } = await library.methods.cellarWethUsdt.cellarTickInfo(0);
-
-    console.log("tick ************************");
-    console.log(tickLower, tickUpper, pool.tick);
-
-    const priceMin = getPriceFromTick(
-      tickLower,
-      Number(uniPool.token0.decimals),
-      Number(uniPool.token1.decimals)
-    );
-    const priceMax = getPriceFromTick(
-      tickUpper,
-      Number(uniPool.token0.decimals),
-      Number(uniPool.token1.decimals)
-    );
-    const priceCurrent = getPriceFromTick(
-      uniPool.tickCurrent,
-      Number(uniPool.token0.decimals),
-      Number(uniPool.token1.decimals)
-    );
-
-    setPoolTick({
-      tickLower,
-      tickUpper,
-      currentTick: uniPool.tickCurrent,
-    });
-
-    setPriceRange({
-      min: priceMin,
-      max: priceMax,
-      current: priceCurrent,
-    });
-
-    changePriceRange({
-      min: priceMin,
-      max: priceMax,
-      current: priceCurrent,
-    }, ethPriceUSD)
-
-    setPool(uniPool);
-
-    /**
-     * TBD, Currently 0
-     */
-    const managementFee = await library.methods.cellarWethUsdt.managementFee();
-    const performanceFee = await library.methods.cellarWethUsdt.performanceFee();
-
-    setServiceFee({
-      service: managementFee,
-      owner: managementFee,
-      validator: performanceFee
-    })
-  };
-
   // tokenNum: 0 or 1 => token0 or token1
   const handleUpdateInputAmount = (amount, tokenNum) => {
     if (!(state.account.address && library)) {
-      return
+      return;
     }
 
     if (isNaN(amount)) {
-      amount = 0
+      amount = 0;
     }
 
     if (tokenNum === 0) {
-      const decimals = pool.token0.decimals
+      const decimals = pool.token0.decimals;
       const decimals2 = pool.token1.decimals;
 
       const val = {
-        format: amount === 0 ? '' : amount,
+        format: amount === 0 ? "" : amount,
         value: new BigNumber(amount).multipliedBy(10 ** decimals),
       };
 
@@ -229,25 +110,28 @@ const AddLiquidity = ({
         tickUpper: Number(poolTick.tickUpper),
         amount0: new BigNumber(amount).multipliedBy(10 ** decimals).toNumber(),
         useFullPrecision: true, // we want full precision for the theoretical position
-      })
+      });
 
-      const price = CurrencyAmount.fromRawAmount(pool.token1, position.amount1.quotient).toSignificant()
+      const price = CurrencyAmount.fromRawAmount(
+        pool.token1,
+        position.amount1.quotient
+      ).toSignificant();
 
       const val2 = {
         format: price,
-        value: new BigNumber(price).multipliedBy(10 ** decimals2)
-      }
+        value: new BigNumber(price).multipliedBy(10 ** decimals2),
+      };
 
-      setDepositAmountOne(val)
-      setDepositAmountTwo(val2)
+      setDepositAmountOne(val);
+      setDepositAmountTwo(val2);
     }
 
     if (tokenNum === 1) {
-      const decimals = pool.token0.decimals
+      const decimals = pool.token0.decimals;
       const decimals2 = pool.token1.decimals;
 
       const val = {
-        format: amount === 0 ? '' : amount,
+        format: amount === 0 ? "" : amount,
         value: new BigNumber(amount).multipliedBy(10 ** decimals2),
       };
 
@@ -256,33 +140,35 @@ const AddLiquidity = ({
         tickLower: Number(poolTick.tickLower),
         tickUpper: Number(poolTick.tickUpper),
         amount1: new BigNumber(amount).multipliedBy(10 ** decimals2).toNumber(),
-      })
+      });
 
-      const price = CurrencyAmount.fromRawAmount(pool.token0, position.amount0.quotient).toSignificant()
+      const price = CurrencyAmount.fromRawAmount(
+        pool.token0,
+        position.amount0.quotient
+      ).toSignificant();
 
       const val2 = {
         format: price,
-        value: new BigNumber(price).multipliedBy(10 ** decimals)
-      }
+        value: new BigNumber(price).multipliedBy(10 ** decimals),
+      };
 
-      setDepositAmountOne(val2)
-      setDepositAmountTwo(val)
+      setDepositAmountOne(val2);
+      setDepositAmountTwo(val);
     }
   };
 
   useEffect(() => {
     if (status === runningStatus.STATUS_LOADING) {
-      setError("loading")
+      setError("loading");
     }
     if (status === runningStatus.STATUS_IDLE) {
-      setError("success")
+      setError("success");
     }
   }, [status]);
 
   useEffect(() => {
     console.log("libarary", library);
     if (state.account.address && library) {
-      initPool();
       initBalance();
     }
   }, [library, state.account.address]);
@@ -347,15 +233,13 @@ const AddLiquidity = ({
 
       <div className={styles["vaults-row"]}>
         <div className={cn(styles["vaults-row-value"], styles.apy)}>
-          <span className={styles.percent}>
-            291%
-          </span>
+          <span className={styles.percent}>291%</span>
           <span className={styles.value}>APY</span>
           <TooltipIcon icon={faQuestionCircle} placement="top">
             <span style={{ padding: "9px 15px" }}>
               This APY is based on
-                <br /> the last 90 days of data, compounded twice a year
-              </span>
+              <br /> the last 90 days of data, compounded twice a year
+            </span>
           </TooltipIcon>
         </div>
       </div>
@@ -371,7 +255,10 @@ const AddLiquidity = ({
             handleUpdateInputAmount(value, 0);
           }}
           onClickMax={(e) => {
-            handleUpdateInputAmount(new BigNumber(balanceOne).dividedBy(10 ** 18), 0);
+            handleUpdateInputAmount(
+              new BigNumber(balanceOne).dividedBy(10 ** 18),
+              0
+            );
           }}
         />
       </div>
@@ -385,28 +272,51 @@ const AddLiquidity = ({
             handleUpdateInputAmount(value, 1);
           }}
           onClickMax={(e) => {
-            handleUpdateInputAmount(new BigNumber(balanceTwo).dividedBy(10 ** 6), 1);
+            handleUpdateInputAmount(
+              new BigNumber(balanceTwo).dividedBy(10 ** 6),
+              1
+            );
           }}
         />
       </div>
       <div className={styles["vaults-row"]}>
-        <span className={styles["vaults-content-subtitle"]} style={{paddingTop: 0}}>
+        <span
+          className={styles["vaults-content-subtitle"]}
+          style={{ paddingTop: 0 }}
+        >
           Current Price Ranges
         </span>
-        <span className={styles["vaults-content-text-btn"]} onClick={(e) => setPriceShowType((priceShowType + 1) % 2)}>{priceShowType === 0 ? 'ETH per USDT' : 'USDT per ETH'}</span>
+        <span
+          className={styles["vaults-content-text-btn"]}
+          onClick={(e) => setPriceShowType((priceShowType + 1) % 2)}
+        >
+          {priceShowType === 0 ? "ETH per USDT" : "USDT per ETH"}
+        </span>
       </div>
       <div className={styles["vaults-row"]}>
         <PriceRange
           className={styles["vaults-row-price"]}
           title="min price"
-          value={priceShowType === 0 ? priceRange.min : (new BigNumber(1).dividedBy(priceRange.max)).toFixed(Number(priceRange.max) > 1 ? 4 : 2)}
-          description={priceShowType === 1 ? 'ETH per USDT' : 'USDT per ETH'}
+          value={
+            priceShowType === 0
+              ? priceRange.min
+              : new BigNumber(1)
+                  .dividedBy(priceRange.max)
+                  .toFixed(Number(priceRange.max) > 1 ? 4 : 2)
+          }
+          description={priceShowType === 1 ? "ETH per USDT" : "USDT per ETH"}
         />
         <PriceRange
           className={styles["vaults-row-price"]}
           title="max price"
-          value={priceShowType === 0 ? priceRange.max : (new BigNumber(1).dividedBy(priceRange.min)).toFixed(Number(priceRange.min) > 1 ? 4: 2) }
-          description={priceShowType === 1 ? 'ETH per USDT' : 'USDT per ETH'}
+          value={
+            priceShowType === 0
+              ? priceRange.max
+              : new BigNumber(1)
+                  .dividedBy(priceRange.min)
+                  .toFixed(Number(priceRange.min) > 1 ? 4 : 2)
+          }
+          description={priceShowType === 1 ? "ETH per USDT" : "USDT per ETH"}
         />
       </div>
       <div className={styles["vaults-row"]}>
