@@ -88,6 +88,16 @@ export default function Layout({
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-25L9M9JDDF"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-25L9M9JDDF');
+        </script>
       </Head>
       <div className='page-background'>
         <div className='ball'></div>
