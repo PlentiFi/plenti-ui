@@ -66,11 +66,11 @@ const AddLiquidity = ({
 }) => {
   const [depositAmountOne, setDepositAmountOne] = useState<FormatValue>({
     value: new BigNumber(0),
-    format: "",
+    format: "0",
   });
   const [depositAmountTwo, setDepositAmountTwo] = useState<FormatValue>({
     value: new BigNumber(0),
-    format: "",
+    format: "0",
   });
 
   const [balanceOne, setBalanceOne] = useState(0);
@@ -97,6 +97,8 @@ const AddLiquidity = ({
   })
 
   const [pool, setPool] = useState(null);
+
+  const [priceShowType, setPriceShowType] = useState(0)
 
   const initBalance = async () => {
     console.log(state.account.address, library);
@@ -387,21 +389,24 @@ const AddLiquidity = ({
           }}
         />
       </div>
-      <span className={styles["vaults-content-subtitle"]}>
-        Current Price Ranges
-      </span>
+      <div className={styles["vaults-row"]}>
+        <span className={styles["vaults-content-subtitle"]} style={{paddingTop: 0}}>
+          Current Price Ranges
+        </span>
+        <span className={styles["vaults-content-text-btn"]} onClick={(e) => setPriceShowType((priceShowType + 1) % 2)}>{priceShowType === 0 ? 'ETH per USDT' : 'USDT per ETH'}</span>
+      </div>
       <div className={styles["vaults-row"]}>
         <PriceRange
           className={styles["vaults-row-price"]}
           title="min price"
-          value={priceRange.min}
-          description="USDT per ETH"
+          value={priceShowType === 0 ? priceRange.min : (new BigNumber(1).dividedBy(priceRange.max)).toFixed(Number(priceRange.max) > 1 ? 4 : 2)}
+          description={priceShowType === 1 ? 'ETH per USDT' : 'USDT per ETH'}
         />
         <PriceRange
           className={styles["vaults-row-price"]}
           title="max price"
-          value={priceRange.max}
-          description="USDT per ETH"
+          value={priceShowType === 0 ? priceRange.max : (new BigNumber(1).dividedBy(priceRange.min)).toFixed(Number(priceRange.min) > 1 ? 4: 2) }
+          description={priceShowType === 1 ? 'ETH per USDT' : 'USDT per ETH'}
         />
       </div>
       <div className={styles["vaults-row"]}>
