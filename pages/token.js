@@ -80,7 +80,7 @@ function Blog() {
         for (const story of data.data.stories) {
             if (story.published_at != null) {
                 console.log(story.full_slug);
-                if (story.full_slug.includes("blog/") ) {
+                if (story.full_slug.includes("token/") ) {
                     stories.push({story});
                 }
             }
@@ -95,7 +95,7 @@ function Blog() {
             <h1>
                 <div className="hot-container">
                     <div className="vaults-title">
-                        <h1>🔥Hot</h1>
+                        <h1>Token</h1>
                     </div>
                     <br/>
                     {
