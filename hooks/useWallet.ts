@@ -19,7 +19,7 @@ export default function useWallet(dispatch) {
       walletconnect: {
         package: WalletConnectProvider, // required
         options: {
-          infuraId: "4321f9b04e2a463ebcbbaf693f565b0c", // Required
+          infuraId: process.env.INFURA_PROJECT_ID, // Required
         },
       },
     };
