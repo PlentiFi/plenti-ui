@@ -10,6 +10,15 @@
   padding-top: 16px;
 }
 
+.vaults-content-text-btn {
+  font-weight: 500;
+  font-size: 12px;
+  text-decoration: underline;
+  color: var(--color-caption);
+  cursor: pointer;
+}
+
+
 /* Vault Selector */
 .vaults-selector {
   display: flex;
