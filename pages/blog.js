@@ -3,6 +3,9 @@ import React from "react";
 import StoryblokClient from 'storyblok-js-client';
 import { render, NODE_IMAGE } from "storyblok-rich-text-react-renderer"
 import { useState, useEffect } from 'react';
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('e761a539fa2591e26b35a98c4ab85338');
 
 let Storyblok = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN
@@ -88,7 +91,9 @@ function Blog() {
     }
 
 
-    console.log(stories)
+    mixpanel.track('Page View', {
+        'page': "blog",
+    });
 
     return (
         <div>
@@ -155,27 +160,5 @@ function Blog() {
     )
 }
 
-// export async function getStaticProps() {
-//
-//     const stories = [];
-//   var response = await Storyblok
-//     .get('cdn/stories/', {
-//       version: 'draft'
-//     })
-//
-//   for (const story of response.data.stories) {
-//     if (story.published_at != null) {
-//       stories.push({ story });
-//     }
-//   }
-// console.log(stories)
-//   return {
-//         props: {
-//             stories,
-//         },
-//     }
-// }
-
-//}
 
 export default Blog
