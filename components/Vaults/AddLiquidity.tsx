@@ -233,12 +233,12 @@ const AddLiquidity = ({
 
       <div className={styles["vaults-row"]}>
         <div className={cn(styles["vaults-row-value"], styles.apy)}>
-          <span className={styles.percent}>291%</span>
+          <span className={styles.percent}>671%</span>
           <span className={styles.value}>APY</span>
           <TooltipIcon icon={faQuestionCircle} placement="top">
             <span style={{ padding: "9px 15px" }}>
               This APY is based on
-              <br /> the last 90 days of data, compounded twice a year
+              <br /> the last 90 days of data, compounded monthly
             </span>
           </TooltipIcon>
         </div>
