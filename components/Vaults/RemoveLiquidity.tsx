@@ -3,6 +3,11 @@ import React, { useReducer, useState, useEffect } from "react";
 import BigNumber from "bignumber.js";
 import { Position } from '@uniswap/v3-sdk'
 import { Currency, CurrencyAmount, Percent } from '@uniswap/sdk-core'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faExclamationTriangle,
+  faQuestionCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Account from "../Account";
 
@@ -66,6 +71,15 @@ const RemoveLiquidity = ({
     const init = async () => {
       console.log(library.methods.cellarWethUsdt);
       const balance = await library.methods.cellarWethUsdt.getBalance(state.account.address);
+
+      if (compare(balance, 0) <= 0) {
+        setCellarInfo({
+          ...cellarInfo,
+          balance: new BigNumber(balance)
+        })
+        setError("insufficientBalance")
+        // return
+      }
       const totalSupply = await library.methods.cellarWethUsdt.totalSupply();
 
       if (tokenId !== 0 && pool) {
@@ -151,6 +165,12 @@ const RemoveLiquidity = ({
 
   return (
     <div className={styles["vaults-content"]}>
+      {(compare(cellarInfo.balance, 0) <= 0 && state.account.address && library) && (
+        <div className={styles["error-message"]}>
+          <FontAwesomeIcon icon={faExclamationTriangle} />
+          No liquidity was found for this vault.
+        </div>
+      )}
       <span className={styles["vaults-content-subtitle"]}>
         Amount to Remove
       </span>
@@ -172,17 +192,19 @@ const RemoveLiquidity = ({
         </div>
       </div>
       <div className={styles["vaults-row2"]}>
-        <div className={styles["vaults-receive"]}>
-          <div className={styles["vaults-receive-icon"]}>
-            <img src="/assets/tokens/weth.svg" />
+        <div style={{width: '100%'}}>
+          <div className={styles["vaults-receive"]}>
+            <div className={styles["vaults-receive-icon"]}>
+              <img src="/assets/tokens/weth.svg" />
+            </div>
+            <div className={styles["vaults-receive-value"]}>{receivedAmount.token0.toFixed(4)}</div>
           </div>
-          <div className={styles["vaults-receive-value"]}>{receivedAmount.token0.toFixed(4)}</div>
-        </div>
-        <div className={styles["vaults-receive"]}>
-          <div className={styles["vaults-receive-icon"]}>
-            <img src="/assets/tokens/usdt.svg" />
+          <div className={styles["vaults-receive"]} style={{ marginBottom: 0 }}>
+            <div className={styles["vaults-receive-icon"]}>
+              <img src="/assets/tokens/usdt.svg" />
+            </div>
+            <div className={styles["vaults-receive-value"]}>{receivedAmount.token1.toFixed(4)}</div>
           </div>
-          <div className={styles["vaults-receive-value"]}>{receivedAmount.token1.toFixed(4)}</div>
         </div>
       </div>
       <div className={styles["vaults-row3"]}>
