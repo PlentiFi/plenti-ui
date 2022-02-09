@@ -243,11 +243,12 @@
 }
 
 .vaults-receive {
-  width: calc(50% - 7px);
+  width: 100%;
   background: #000000;
   border: 0.5px solid var(--color-border);
   border-radius: var(--border-default-radius);
   display: flex;
+  margin-bottom: 16px;
 }
 
 .vaults-receive-icon {
@@ -272,8 +273,9 @@
   height: 59px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 .vaults-receive-mode {
@@ -316,6 +318,22 @@
 
 .vaults-service-fee-panel .row {
   margin-bottom: 5px;
+}
+
+.error-message {
+  display: flex;
+  background: #F04438;
+  border-radius: var(--border-default-radius);
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  height: 49px;
+}
+
+.error-message svg {
+  margin-right: 10px;
+  height: 12px;
 }
 
 @media screen and (max-width: 500px) {
