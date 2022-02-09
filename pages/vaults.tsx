@@ -20,6 +20,9 @@ import { compare } from "utils/number";
 
 import { getUniswapV3PoolOverview } from "../utils/uniswap-v3";
 import { getPriceFromTick } from "../utils/math";
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('e761a539fa2591e26b35a98c4ab85338');
 
 type VAULTS_TAB_TYPE = "add" | "remove";
 
@@ -248,6 +251,10 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
       initPool();
     }
   }, [library, state.account.address]);
+
+  mixpanel.track('Page View', {
+    'page': "vaults",
+  });
 
   return (
     <div className="vaults-container">

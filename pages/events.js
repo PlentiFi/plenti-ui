@@ -3,6 +3,9 @@ import React from "react";
 import StoryblokClient from 'storyblok-js-client';
 import { render, NODE_IMAGE } from "storyblok-rich-text-react-renderer"
 import { useState, useEffect } from 'react';
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('e761a539fa2591e26b35a98c4ab85338');
 
 let Storyblok = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN
@@ -88,7 +91,9 @@ function Blog() {
         }
     }
 
-    console.log(stories)
+    mixpanel.track('Page View', {
+        'page': "events",
+    });
 
     return (
         <div>
@@ -111,8 +116,7 @@ function Blog() {
                             let e_date;
                             let content = story.story.content
                             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                            console.log(story.story)
-                            console.log(content)
+
 
                             if (content.StartDate != "") {
                                 let date_data = content.StartDate.split(" ")
@@ -142,7 +146,6 @@ function Blog() {
 
 
 
-console.log(start_date)
                             return(
                                 <div>
                                     <div className="hot-topic">{story.story.content.Title}</div>
@@ -173,27 +176,5 @@ console.log(start_date)
     )
 }
 
-// export async function getStaticProps() {
-//
-//     const stories = [];
-//   var response = await Storyblok
-//     .get('cdn/stories/', {
-//       version: 'draft'
-//     })
-//
-//   for (const story of response.data.stories) {
-//     if (story.published_at != null) {
-//       stories.push({ story });
-//     }
-//   }
-// console.log(stories)
-//   return {
-//         props: {
-//             stories,
-//         },
-//     }
-// }
-
-//}
 
 export default Blog
