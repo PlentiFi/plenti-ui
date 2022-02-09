@@ -242,7 +242,7 @@
   padding: 0px 10px;
 }
 
-.valuts-receive {
+.vaults-receive {
   width: calc(50% - 7px);
   background: #000000;
   border: 0.5px solid var(--color-border);
@@ -250,7 +250,7 @@
   display: flex;
 }
 
-.valuts-receive-icon {
+.vaults-receive-icon {
   height: 59px;
   width: 59px;
   border-right: 0.5px solid var(--color-border);
@@ -261,22 +261,22 @@
   align-items: center;
 }
 
-.valuts-receive-icon img {
+.vaults-receive-icon img {
   height: 43px;
 }
 
-.valuts-receive-value {
+.vaults-receive-value {
   flex: 1;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   height: 59px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
-.valuts-receive-mode {
+.vaults-receive-mode {
   color: var(--color-caption);
   font-weight: normal;
   font-size: 16px;
@@ -412,21 +412,22 @@
     padding: 12px 8px;
   }
 
-  .valuts-receive-icon {
+  .vaults-receive-icon {
+    height: 36px !important;
+    width: 26px !important;
+  }
+
+  .vaults-receive-icon img {
+    width: 18px !important;
+  }
+
+  .vaults-receive-value {
     height: 36px;
-    width: 36px;
+    font-size: 12px;
+    margin-left: 5px;
   }
 
-  .valuts-receive-icon img {
-    height: 27px;
-  }
-
-  .valuts-receive-value {
-    height: 36px;
-    font-size: 16px;
-  }
-
-  .valuts-receive-mode {
+  .vaults-receive-mode {
     font-size: 12px;
   }
 

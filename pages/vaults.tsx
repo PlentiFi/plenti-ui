@@ -44,6 +44,7 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
   /**
    * Pool Initialize
    */
+  const [nftPostionTokenId, setNftPostionTokenId] = useState(0)
   const [pool, setPool] = useState(null);
   const [poolTick, setPoolTick] = useState({
     tickLower: 0,
@@ -97,10 +98,10 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
     );
 
     console.log("uniPool", uniPool);
-    const {
-      tickLower,
-      tickUpper,
-    } = await library.methods.cellarWethUsdt.cellarTickInfo(0);
+
+    const tickInfo = await library.methods.cellarWethUsdt.getCellarTickInfo();
+    const [tokenId, tickUpper, tickLower, weight] = tickInfo[0]
+    setNftPostionTokenId(tokenId)
 
     console.log("tick ************************");
     console.log(tickLower, tickUpper, pool.tick);
@@ -232,6 +233,45 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
     }
   };
 
+  const handleRemoveLiquidity = async (amount ) => {
+    setStatus(runningStatus.STATUS_LOADING);
+
+    const block = await library.web3.eth.getBlock("latest");
+    const timestamp = block.timestamp + 60 * 20; // 20 Mins
+
+    const params = [
+      amount.toString(10),
+      0,
+      0,
+      timestamp,
+    ];
+
+    const transaction = library.methods.cellarWethUsdt.removeLiquidityFromUniV3(
+      params,
+      {
+        from: state.account.address,
+      }
+    );
+
+    try {
+      console.log(transaction);
+      const transactionResult = await transaction.send();
+      console.log(transactionResult);
+
+      if (transactionResult.status) {
+        setStatus(runningStatus.STATUS_SUCCESS);
+      } else {
+        setStatus(runningStatus.STATUS_ERROR);
+      }
+    } catch (e) {
+      console.log("--------------------------------------", e.code);
+      console.log(e);
+      if ("code" in e && e.code === 4001) {
+        setStatus(runningStatus.STATUS_IDLE);
+      }
+    }
+  };
+
   useEffect(() => {
     if (
       status === runningStatus.STATUS_SUCCESS ||
@@ -294,6 +334,13 @@ export default function Vaults({ library, state, dispatch, connectWallet }) {
             library={library}
             state={state}
             onConnectWallet={connectWallet}
+            onRemoveLiquidity={(amount) => handleRemoveLiquidity(amount)}
+            status={status}
+            pool={pool}
+            poolTick={poolTick}
+            priceRange={priceRange}
+            serviceFee={serviceFee}
+            tokenId={nftPostionTokenId}
           />
         )}
       </div>
