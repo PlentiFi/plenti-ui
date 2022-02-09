@@ -2,6 +2,7 @@ import * as EvmChains from 'evm-chains'
 import Web3 from 'web3'
 import ERC20 from './ABIs/ERC20.json'
 import WETH_USDT_CELLAR_CONTRACT from './ABIs/WETH_USDT_CELLAR.json'
+import NFT_POSITION_MANAGE_CONTRACT from './ABIs/NonfungiblePositionManager.json'
 import { ZERO, addresses } from 'utils/constants'
 
 const DEFAULT_REFRESH = 5 * 1000
@@ -137,6 +138,10 @@ class PlentiLibrary {
           WETH_USDT_CELLAR_CONTRACT as any,
           addresses.CELLAR_WETH_USDT
         ),
+        nftPositionManager: new this.web3.eth.Contract(
+          NFT_POSITION_MANAGE_CONTRACT as any,
+          addresses.NFT_POSITION_MANAGER
+        ),
       };
 
       this.timers = [
@@ -163,9 +168,16 @@ class PlentiLibrary {
       this.methods = {
         cellarWethUsdt: {
           cellarTickInfo: call(this.contracts.cellarWethUsdt.methods.cellarTickInfo),
+          getCellarTickInfo: call(this.contracts.cellarWethUsdt.methods.getCellarTickInfo),
           managementFee: call(this.contracts.cellarWethUsdt.methods.managementFee),
           performanceFee: call(this.contracts.cellarWethUsdt.methods.performanceFee),
+          getBalance: call(this.contracts.cellarWethUsdt.methods.balanceOf),
+          totalSupply: call(this.contracts.cellarWethUsdt.methods.totalSupply),
           addLiquidityForUniV3: send(this.contracts.cellarWethUsdt.methods.addLiquidityForUniV3),
+          removeLiquidityFromUniV3: send(this.contracts.cellarWethUsdt.methods.removeLiquidityFromUniV3),
+        },
+        nftPositionManager: {
+          getPositionByTokenId: call(this.contracts.nftPositionManager.methods.positions),
         },
         Market: getERC20Methods,
         web3: {
