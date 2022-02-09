@@ -12,6 +12,10 @@ import Link from 'next/link'
 
 import styles from './Layout.module.css'
 import cn from 'classname'
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('e761a539fa2591e26b35a98c4ab85338');
+
 
 const FETCH_TIME = 15
 let balanceTimer = null
@@ -45,6 +49,7 @@ export default function Layout({
 
   const [menu, setMenu] = useState<MENU>('vault')
 
+
   useEffect(() => {
     if (router.route.includes('/vaults')) {
       setMenu('vault')
@@ -66,6 +71,8 @@ export default function Layout({
       return
     }
   }, [router.route])
+
+
 
   return (
     <>
