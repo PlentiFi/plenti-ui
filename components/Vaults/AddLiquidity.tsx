@@ -205,7 +205,7 @@ const AddLiquidity = ({
 
   return (
     <div className={styles["vaults-content"]}>
-      <span className={styles["vaults-content-subtitle"]}>Select a Vault</span>
+      <span className={styles["vaults-content-subtitle"]}>Select a Vault - powered By SOMMELIER <img src="/assets/logo/sommelier-color.png" /></span>
 
       <div className={styles["vaults-row"]}>
         <VaultItem 
