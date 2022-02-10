@@ -101,7 +101,7 @@ export default function Layout({
       </div>
       <main className={styles.main}>
         <header className={styles.header}>
-          <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti-ball.png" alt="plenti" /></a>
+          <a href="/" className={styles.headerLogo}><img src="/assets/logo/sommelier.png" alt="plenti" /></a>
           <div className={styles.headerConnect}>
             <a className={styles.social} href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.png" /></a>
             <a className={styles.social} href="https://twitter.com/plenti_fi" target="_blank"> <img src="/assets/socials/twitter.png" /></a >
