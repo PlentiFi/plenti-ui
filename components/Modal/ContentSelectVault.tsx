@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
+import VaultItem from '../VaultItem'
+
 import styles from "./Modal.module.css";
-import cn from "classname"
 
 const ContentSelectVault = () => {
   // const [val, setVal] = useState("");
@@ -19,19 +20,12 @@ const ContentSelectVault = () => {
       <div className={styles["modal-view-divider"]} style={{ marginTop: 26, marginBottom: 20 }}/>
 
       <div className={styles["modal-select-vault-search-result"]}>
-        <div className={styles["modal-select-vault-search-item"]}>
-          <div className={cn(styles.icon, styles.uniswap)}>
-            <img src="/assets/tokens/uniswap-red.svg" />
-          </div>
-          <div className={styles.icon}>
-            <img src="/assets/tokens/weth.svg" />
-          </div>
-          <div className={styles.icon}>
-            <img src="/assets/tokens/usdt.svg" />
-          </div>
-          <span className={styles.name}>WETH / USDT</span>
-          <span className={styles.fee}>0.05%</span>
-        </div>
+        <VaultItem
+          name={'ETH-USDT'}
+          fee={0.05}
+          badges={["ETHEREUM", "UNISWAP V3"]}
+          onSelectVault={() => {}}
+        />
       </div>
     </div>
   );

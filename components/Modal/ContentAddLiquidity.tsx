@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import BigNumber from 'bignumber.js'
 
 import DepositAmountValue from '../DepositAmountValue'
 import PriceRange from '../PriceRange'
+import VaultItem from '../VaultItem'
 
 import styles from "./Modal.module.css";
-import cn from "classname";
 
 const ContentAddLiquidity = ({ onConfirm, amountOne, amountTwo, priceRange, ethPrice }) => {
   return (
@@ -14,19 +14,12 @@ const ContentAddLiquidity = ({ onConfirm, amountOne, amountTwo, priceRange, ethP
       <span className={styles["modal-view-title"]}>Confirm Add Liquidity</span>
 
       <div className={styles["selected-vault"]}>
-        <div className={styles["modal-select-vault-search-item"]}>
-          <div className={cn(styles.icon, styles.uniswap)}>
-            <img src="/assets/tokens/uniswap-red.svg" />
-          </div>
-          <div className={styles.icon}>
-            <img src="/assets/tokens/weth.svg" />
-          </div>
-          <div className={styles.icon}>
-            <img src="/assets/tokens/usdt.svg" />
-          </div>
-          <span className={styles.name}>WETH / USDT</span>
-          <span className={styles.fee}>0.05%</span>
-        </div>
+        <VaultItem
+          name={'ETH-USDT'}
+          fee={0.05}
+          badges={["ETHEREUM", "UNISWAP V3"]}
+          onSelectVault={() => { }}
+        />
       </div>
 
       <div className={styles["inputed-value"]}>

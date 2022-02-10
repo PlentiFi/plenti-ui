@@ -86,60 +86,6 @@
   flex-direction: column;
 }
 
-.modal-select-vault-search-item {
-  margin-bottom: 20px;
-  height: 59px;
-  background: var(--color-background);
-  border: 0.5px solid var(--color-border);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  padding: 0px 4px;
-}
-
-.modal-select-vault .modal-select-vault-search-item:hover {
-  border: 0.5px solid var(--color-selectable-border);
-}
-
-.modal-select-vault-search-item .icon {
-  width: 51px;
-  height: 51px;
-  background: var(--color-background);
-  border: 0.5px solid var(--color-border);
-  border-radius: 3.92307px;
-  margin-right: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-select-vault-search-item .icon.uniswap {
-  border: none;
-}
-
-.modal-select-vault-search-item .icon img {
-  height: 80%;
-}
-
-.modal-select-vault-search-item .icon.uniswap img {
-  height: 97%;
-}
-
-.modal-select-vault-search-item .name {
-  font-size: 20px;
-  font-weight: 600;
-  padding-left: 7px;
-}
-
-.modal-select-vault-search-item .fee {
-  background: #c6c6c6;
-  border-radius: 2px;
-  font-size: 15.6px;
-  color: var(--color-background);
-  padding: 2px;
-  margin-left: 10px;
-}
-
 /* Add Liquidity Confirm */
 .modal-add-liqudity-confirm .selected-vault {
   margin-top: 28px;
@@ -180,23 +126,6 @@
 
   .modal-view-title {
     font-size: 13px;
-  }
-
-  .modal-select-vault-search-item {
-    height: 38px;
-  }
-
-  .modal-select-vault-search-item .icon {
-    width: 33px;
-    height: 33px;
-  }
-
-  .modal-select-vault-search-item .name {
-    font-size: 12px;
-  }
-
-  .modal-select-vault-search-item .fee {
-    font-size: 10.6px;
   }
 
   .modal-add-liqudity-confirm .item {
