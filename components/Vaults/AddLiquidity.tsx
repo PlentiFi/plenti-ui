@@ -113,10 +113,10 @@ const AddLiquidity = ({
         useFullPrecision: true, // we want full precision for the theoretical position
       });
 
-      const price = CurrencyAmount.fromRawAmount(
+      const price = new BigNumber(CurrencyAmount.fromRawAmount(
         pool.token1,
         position.amount1.quotient
-      ).toSignificant();
+      ).toSignificant()).multipliedBy(1).toString(10);
 
       const val2 = {
         format: price,
@@ -143,10 +143,10 @@ const AddLiquidity = ({
         amount1: new BigNumber(amount).multipliedBy(10 ** decimals2).toNumber(),
       });
 
-      const price = CurrencyAmount.fromRawAmount(
+      const price = new BigNumber(CurrencyAmount.fromRawAmount(
         pool.token0,
         position.amount0.quotient
-      ).toSignificant();
+      ).toSignificant()).multipliedBy(1.001).toString(10);
 
       const val2 = {
         format: price,
