@@ -52,8 +52,8 @@
 
 .vault-description-badge-container {
   border-radius: 2.19098px;
-  height: 11px;
-  font-size: 10px;
+  height: 14px;
+  font-size: 8px;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -77,9 +77,5 @@
   .vault-item-container .vault-item-content .vault-item-title {
     font-size: 14px;
     line-height: 20px;
-  }
-
-  .vault-description-badge-container {
-    font-size: 8px;
   }
 }
