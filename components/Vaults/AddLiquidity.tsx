@@ -15,6 +15,7 @@ import DepositAmountInput from "../DepositAmountInput";
 import PriceRange from "../PriceRange";
 import Account from "../Account";
 import TooltipIcon from "../TooltipIcon";
+import VaultItem from "../VaultItem";
 
 import { isNaN, compare } from "../../utils/number";
 import { runningStatus } from "../../utils/constants";
@@ -206,29 +207,14 @@ const AddLiquidity = ({
     <div className={styles["vaults-content"]}>
       <span className={styles["vaults-content-subtitle"]}>Select a Vault</span>
 
-      <div
-        className={styles["vaults-selector"]}
-        role="button"
-        onClick={(e) => onSelectVault()}
-      >
-        <div className={styles["vaults-selector-content"]}>
-          <div className={cn(styles["vaults-selector-icon"], styles.uniswap)}>
-            <img src="/assets/tokens/uniswap-red.svg" />
-          </div>
-          <div className={styles["vaults-selector-icon"]}>
-            <img src="/assets/tokens/weth.svg" />
-          </div>
-          <div className={styles["vaults-selector-icon"]}>
-            <img src="/assets/tokens/usdt.svg" />
-          </div>
-          <span className={styles["vaults-selector-title"]}>
-            <span className={styles.desktop}>{`WETH-USDT/0.05%`}</span>
-            <span className={styles.mobile}>{`WETH/USDT`}</span>
-          </span>
-        </div>
-        <div className={styles["vaults-selector-combo"]}>
-          <FontAwesomeIcon icon={faChevronDown} />
-        </div>
+      <div className={styles["vaults-row"]}>
+        <VaultItem 
+          name={'ETH-USDT'}
+          fee={0.05}
+          badges={["ETHEREUM", "UNISWAP V3"]}
+          onSelectVault={() => onSelectVault()} 
+          hover={true}
+        />
       </div>
 
       <div className={styles["vaults-row"]}>
