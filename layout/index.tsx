@@ -56,11 +56,6 @@ export default function Layout({
       return
     }
 
-    if (router.route.includes('/token')) {
-      setMenu('token')
-      return
-    }
-
     if (router.route.includes('/blog')) {
       setMenu('blog')
       return
@@ -70,9 +65,13 @@ export default function Layout({
       setMenu('events')
       return
     }
+
+    if (router.route.includes('/portfolio')) {
+      setMenu('portfolio')
+      return
+    }
+
   }, [router.route])
-
-
 
   return (
     <>
@@ -101,7 +100,7 @@ export default function Layout({
       </div>
       <main className={styles.main}>
         <header className={styles.header}>
-          <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti-ball.png" alt="plenti" /></a>
+          <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti-somm.png" alt="plenti" /></a>
           <div className={styles.headerConnect}>
             <a className={styles.social} href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.png" /></a>
             <a className={styles.social} href="https://twitter.com/plenti_fi" target="_blank"> <img src="/assets/socials/twitter.png" /></a >
@@ -120,8 +119,8 @@ export default function Layout({
             <div className={cn(styles.link, { [styles.active]: menu === 'vault' })}>
               <Link href="/vaults">Vaults</Link>
             </div>
-            <div className={styles.link}>
-              <Link href="/vaults">Portfolio</Link>
+            <div className={cn(styles.link, { [styles.active]: menu === 'portfolio' })}>
+              <Link href="/portfolio">Portfolio</Link>
             </div>
             <div className={cn(styles.link, { [styles.active]: menu === 'blog' })}>
               <img src="/assets/hot.png" />
@@ -129,9 +128,6 @@ export default function Layout({
             </div>
             <div className={cn(styles.link, { [styles.active]: menu === 'events' })}>
               <Link href="/events">Events</Link>
-            </div>
-            <div className={cn(styles.link, { [styles.active]: menu === 'token' })}>
-              <Link href="/token">Token</Link>
             </div>
           </div>
           <div className={styles['page-container']}>
