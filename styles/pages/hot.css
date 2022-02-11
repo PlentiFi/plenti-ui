@@ -95,3 +95,31 @@
 .hot-image {
   width: 100%;
 }
+
+.image-space {
+  margin-bottom: 20px;
+}
+
+.event-button {
+
+  width: 200px;
+  height: 70px;
+
+  padding: 10px;
+
+  /* White */
+  background: #FFFFFF;
+  border-radius: 4.53846px;
+
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100px;
+  /* identical to box height, or 16px */
+  text-align: center;
+  letter-spacing: -0.01em;
+
+  /* Black */
+  color: #000000;
+}
