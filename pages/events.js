@@ -116,6 +116,14 @@ function Blog() {
                             let e_date;
                             let content = story.story.content
                             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                            let start_html = "";
+                            let end_html = "";
+
+                            let story_image = "";
+                            let the_story = story.story;
+                            if (the_story.content.Image) {
+                                story_image = <div className="image-space"><img className="hot-image" img src={ "https:" + the_story.content.Image}/></div>
+                            }
 
 
                             if (content.StartDate != "") {
@@ -129,6 +137,8 @@ function Blog() {
 
                                 start_date = s_date.toLocaleDateString(undefined, options);
                                 start_time = getTime(s_date);
+
+                                start_html = <div className="hot-date">{start_date}</div>;
                             }
 
                             if (content.EndDate != "") {
@@ -142,15 +152,20 @@ function Blog() {
 
                                 end_date = s_date.toLocaleDateString(undefined, options);
                                 end_time = getTime(s_date);
+                                end_html = <div className="hot-date">{end_date}</div>
                             }
 
-
+                            let reg_link = ""
+                            if (content.Register != "") {
+                                reg_link =     <a href={content.Register} className="event-button" target="_blank">Register Now</a>
+                            }
 
                             return(
                                 <div>
+                                    {story_image}
                                     <div className="hot-topic">{story.story.content.Title}</div>
-                                    <div className="hot-date">{start_date}</div>
-                                    <div className="hot-date">{end_date}</div>
+                                    {start_html}
+                                    {end_html}
                                     <hr className="hot-bar"/>
                                     <div className="hot-body">{render(story.story.content.Description, {
                                         nodeResolvers: {
@@ -164,6 +179,8 @@ function Blog() {
                                             )
                                         }
                                     })}</div>
+                                    {reg_link}
+
                                 </div>
                             )
                         })
