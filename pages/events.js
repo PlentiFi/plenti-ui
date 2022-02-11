@@ -107,7 +107,6 @@ function Blog() {
 
 
                         stories.map((story, index) => {
-                            console.log(story);
                             let start_date = "";
                             let end_date = "";
                             let start_time = "";

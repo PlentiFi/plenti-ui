@@ -105,7 +105,6 @@ function Blog() {
                     <br/>
                     {
                         stories.map((story, index) => {
-
                             let story_image = "";
                             let the_story = story.story;
                             if (the_story.content.image) {
