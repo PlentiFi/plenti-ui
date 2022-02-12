@@ -66,10 +66,7 @@ export default function Layout({
       return
     }
 
-    if (router.route.includes('/portfolio')) {
-      setMenu('portfolio')
-      return
-    }
+
 
   }, [router.route])
 
@@ -120,7 +117,7 @@ export default function Layout({
               <Link href="/vaults">Vaults</Link>
             </div>
             <div className={cn(styles.link, { [styles.active]: menu === 'portfolio' })}>
-              <Link href="/portfolio">Portfolio</Link>
+              <Link href="/vaults">Portfolio</Link>
             </div>
             <div className={cn(styles.link, { [styles.active]: menu === 'blog' })}>
               <img src="/assets/hot.png" />
