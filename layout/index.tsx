@@ -99,7 +99,6 @@ export default function Layout({
         <header className={styles.header}>
           <a href="/" className={styles.headerLogo}><img src="/assets/logo/plenti-somm.png" alt="plenti" /></a>
           <div className={styles.headerConnect}>
-            <a className={styles.social} href="https://discord.gg/tfmktwrxNb" target="_blank"><img src="/assets/socials/discord.png" /></a>
             <a className={styles.social} href="https://twitter.com/plenti_fi" target="_blank"> <img src="/assets/socials/twitter.png" /></a >
             <Account
               library={library}
@@ -115,9 +114,6 @@ export default function Layout({
           <div className={styles['tab-container']}>
             <div className={cn(styles.link, { [styles.active]: menu === 'vault' })}>
               <Link href="/vaults">Vaults</Link>
-            </div>
-            <div className={cn(styles.link, { [styles.active]: menu === 'portfolio' })}>
-              <Link href="/vaults">Portfolio</Link>
             </div>
             <div className={cn(styles.link, { [styles.active]: menu === 'blog' })}>
               <img src="/assets/hot.png" />
