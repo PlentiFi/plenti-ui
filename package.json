@@ -29,7 +29,7 @@
     "keccak256": "^1.0.6",
     "merkletreejs": "^0.2.26",
     "mixpanel-browser": "^2.43.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "multiselect-react-dropdown": "^2.0.4",
     "next": "12.1.0",
     "npm": "^8.4.1",
